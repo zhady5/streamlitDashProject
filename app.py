@@ -52,6 +52,7 @@ subheader_style = """
 # Основная функция приложения
 def main():
     st.set_page_config(layout="wide")
+    st.markdown(""" <style> body { max-width: 1200px; /* Максимальная ширина */ margin-left: auto; margin-right: auto; padding: 30px; /* Отступы слева и справа */ } </style> """, unsafe_allow_html=True)
     
     # Заголовок
     st.markdown(header_style, unsafe_allow_html=True)
