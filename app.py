@@ -22,8 +22,9 @@ body_style = """
     <style> 
       body { 
         max-width: 1200px; /* Максимальная ширина */ 
-        margin-left: auto; 
-        margin-right: auto;
+        #margin-left: auto; 
+        #margin-right: auto;
+        backgroundColor: #ffb347,
         padding: 300px; /* Отступы слева и справа */ }
     </style> """
 
