@@ -9,7 +9,7 @@ from functions import get_current_previous_sums
 def create_fig_subs_inds(subs, selected_channel):
     
     # График по подписчикам
-    subdf_subs = subs[subs.channel_name == selected_channel][['channel_name', 'date', 'subs_cnt']].drop_duplicates()
+    subdf_subs = subs[subs.channel_name == selected_channel][['channel_name', 'date', 'subs_cnt', 'subs_change']].drop_duplicates()
     
     # Создание subplots
     fig_subs = make_subplots(
@@ -23,7 +23,7 @@ def create_fig_subs_inds(subs, selected_channel):
         vertical_spacing=0.08
     )
     
-    mean_subs = subdf_subs.subs.mean()
+    mean_subs = subdf_subs.subs_cnt.mean()
     colors = ['#8B4513' if val >= 2 * mean_subs else '#F5DEB3' for val in subdf_subs['subs_cnt']]
     
     fig_subs.add_trace(go.Bar(x=subdf_subs.date, y=subdf_subs.subs_cnt, marker_color=colors,
