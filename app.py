@@ -24,7 +24,7 @@ body_style = """
         max-width: 1200px; /* Максимальная ширина */ 
         margin-left: auto; 
         margin-right: auto;
-        padding: 60px; /* Отступы слева и справа */ }
+        padding: 300px; /* Отступы слева и справа */ }
     </style> """
 
 # Стили заголовков и подзаголовков
