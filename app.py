@@ -65,9 +65,10 @@ def main():
     selected_channel = st.selectbox('Выберите канал:', channels_list)
 
     posts = processed_data['posts']
+    subs = processed_data['subs']
     
     fig_posts = create_fig_posts_inds(posts, selected_channel)
-    fig_subs = create_fig_subs_inds(posts, selected_channel)
+    fig_subs = create_fig_subs_inds(subs, selected_channel)
 
     with st.container():
         # Размещение графиков на одной строке
