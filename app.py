@@ -60,11 +60,11 @@ def main():
     st.markdown('<div class="subheader"><h2>Дашборд по анализу Telegram-каналов</h2></div>', unsafe_allow_html=True)
     
     # Выбор канала
-    channels = posts['channel_name'].unique()
-    selected_channel = st.selectbox('Выберите канал:', channels)
+    channels_list = process_data['posts']['channel_name'].unique()
+    selected_channel = st.selectbox('Выберите канал:', channels_list)
     
-    fig_posts = create_fig_posts_inds(posts, selected_channel)
-    fig_subs = create_fig_subs_inds(subs, selected_channel)
+    fig_posts = create_fig_posts_inds(process_data['posts'], selected_channel)
+    fig_subs = create_fig_subs_inds(process_data['subs'], selected_channel)
         # Размещение графиков на одной строке
     col1, col2 = st.columns(2)
     with col1:
