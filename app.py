@@ -72,7 +72,7 @@ def main():
 
     with st.container():
         # Размещение графиков на одной строке
-        col1, col2 = st.columns([1,2])
+        col1, col2 = st.columns(2)
         with col1:
             st.plotly_chart(fig_posts, use_container_width=True)
         with col2:
@@ -81,26 +81,30 @@ def main():
     with st.container():
         # Размещение графиков на одной строке
         # Кнопки для выбора периода
-        
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2 = st.columns(2)
         with col1:
-            if st.button("Последние 3 дня"):
-                filtered_df = posts[(posts.channel_name == selected_channel) &
-                                    (posts.date >= date_ago('days', 2))]
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                if st.button("Последние 3 дня"):
+                    filtered_df = posts[(posts.channel_name == selected_channel) &
+                                        (posts.date >= date_ago('days', 2))]
+            with col2:
+                if st.button("Последняя неделя"):
+                    filtered_df = posts[(posts.channel_name == selected_channel) &
+                                        (posts.date >= date_ago('weeks', 1))]
+            with col3:
+                if st.button("Последний месяц"):
+                    filtered_df = posts[(posts.channel_name == selected_channel) &
+                                        (posts.date >= date_ago('months', 1))]
+            with col4:
+                if st.button("Все время"):
+                    filtered_df = posts[(posts.channel_name == selected_channel) &
+                                        (posts.date >= date_ago('months', 6))]
+                  
+                
+            st.plotly_chart(create_heatmap(filtered_df), use_container_width=True)
         with col2:
-            if st.button("Последняя неделя"):
-                filtered_df = posts[(posts.channel_name == selected_channel) &
-                                    (posts.date >= date_ago('weeks', 1))]
-        with col3:
-            if st.button("Последний месяц"):
-                filtered_df = posts[(posts.channel_name == selected_channel) &
-                                    (posts.date >= date_ago('months', 1))]
-        with col4:
-            if st.button("Все время"):
-                filtered_df = posts[(posts.channel_name == selected_channel) &
-                                    (posts.date >= date_ago('months', 6))]
-
-        st.plotly_chart(create_heatmap(filtered_df), use_container_width=True)
+            st.write('col2')
               
 
 if __name__ == "__main__":
