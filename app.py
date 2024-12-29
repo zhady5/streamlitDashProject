@@ -11,6 +11,7 @@ from functions import date_ago, convert_date, get_gradient_color, get_current_pr
 
 from fig_posts_inds import create_fig_posts_inds
 from fig_subs_inds import create_fig_subs_inds
+from fig_heatmap import create_heatmap
 
 channels, posts, reactions, subscribers, views = load_data()
 processed_data = process_data(channels, posts, reactions, subscribers, views)
@@ -62,15 +63,44 @@ def main():
     # Выбор канала
     channels_list = processed_data['posts']['channel_name'].unique()
     selected_channel = st.selectbox('Выберите канал:', channels_list)
+
+    posts = processed_data['posts']
     
-    fig_posts = create_fig_posts_inds(processed_data['posts'], selected_channel)
-    fig_subs = create_fig_subs_inds(processed_data['subs'], selected_channel)
+    fig_posts = create_fig_posts_inds(posts, selected_channel)
+    fig_subs = create_fig_subs_inds(posts, selected_channel)
+
+    with st.container():
         # Размещение графиков на одной строке
-    col1, col2 = st.columns(2)
-    with col1:
-        st.plotly_chart(fig_posts, use_container_width=True)
-    with col2:
-        st.plotly_chart(fig_subs, use_container_width=True)
+        col1, col2 = st.columns([1,2])
+        with col1:
+            st.plotly_chart(fig_posts, use_container_width=True)
+        with col2:
+            st.plotly_chart(fig_subs, use_container_width=True)
+
+    with st.container():
+        # Размещение графиков на одной строке
+        # Кнопки для выбора периода
+        
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            if st.button("Последние 3 дня"):
+                filtered_df = posts[(posts.channel_name == selected_channel) &
+                                    (posts.date >= date_ago('days', 2))]
+        with col2:
+            if st.button("Последняя неделя"):
+                filtered_df = posts[(posts.channel_name == selected_channel) &
+                                    (posts.date >= date_ago('weeks', 1))]
+        with col3:
+            if st.button("Последний месяц"):
+                filtered_df = posts[(posts.channel_name == selected_channel) &
+                                    (posts.date >= date_ago('months', 1))]
+        with col4:
+            if st.button("Все время"):
+                filtered_df = posts[(posts.channel_name == selected_channel) &
+                                    (posts.date >= date_ago('months', 6))]
+
+        st.plotly_chart(create_heatmap(filtered_df), use_container_width=True)
+              
 
 if __name__ == "__main__":
     main()
