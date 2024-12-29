@@ -70,6 +70,8 @@ def main():
     fig_posts = create_fig_posts_inds(posts, selected_channel)
     fig_subs = create_fig_subs_inds(subs, selected_channel)
 
+    filtered_df = pd.DataFrame()
+
     with st.container():
         # Размещение графиков на одной строке
         col1, col2 = st.columns(2)
@@ -101,8 +103,8 @@ def main():
                     filtered_df = posts[(posts.channel_name == selected_channel) &
                                         (posts.date >= date_ago('months', 6))]
                   
-                
-            st.plotly_chart(create_heatmap(filtered_df), use_container_width=True)
+            if not filtered_df.empty:    
+                st.plotly_chart(create_heatmap(filtered_df), use_container_width=True)
         with col2:
             st.write('col2')
               
