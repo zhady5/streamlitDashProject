@@ -48,8 +48,8 @@ def create_fig_posts_inds(posts, selected_channel):
         font_family="Georgia",
         font_size=12,
         margin=dict(l=40, r=20, t=40, b=10),
-        paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor= '#ffb347', #'rgba(0,0,0,0)',
+        plot_bgcolor= '#ffb347', #'rgba(0,0,0,0)',
         xaxis=dict(
             rangeselector=dict(  # Добавляем элементы управления диапазоном
                 bgcolor='#f5dfbf',  # Фоновый цвет области с кнопками
