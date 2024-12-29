@@ -88,19 +88,19 @@ def main():
         with col1:
             col1, col2, col3, col4 = st.columns(4)
             with col1:
-                if st.button("Последние 3 дня"):
+                if st.button("3д"):
                     filtered_df = posts[(posts.channel_name == selected_channel) &
                                         (pd.to_datetime(posts.date) >= date_ago('days', 2))]
             with col2:
-                if st.button("Последняя неделя"):
+                if st.button("1н"):
                     filtered_df = posts[(posts.channel_name == selected_channel) &
                                         (pd.to_datetime(posts.date) >= date_ago('weeks', 1))]
             with col3:
-                if st.button("Последний месяц"):
+                if st.button("1м"):
                     filtered_df = posts[(posts.channel_name == selected_channel) &
                                         (pd.to_datetime(posts.date) >= date_ago('months', 1))]
             with col4:
-                if st.button("Все время"):
+                if st.button("all (6м)"):
                     filtered_df = posts[(posts.channel_name == selected_channel) &
                                         (pd.to_datetime(posts.date) >= date_ago('months', 6))]
                   
