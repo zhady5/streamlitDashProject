@@ -17,6 +17,16 @@ from fig_heatmap import create_heatmap
 channels, posts, reactions, subscribers, views = load_data()
 processed_data = process_data(channels, posts, reactions, subscribers, views)
 
+
+body_style = """ 
+    <style> 
+      body { 
+        max-width: 1200px; /* Максимальная ширина */ 
+        margin-left: auto; 
+        margin-right: auto;
+        padding: 60px; /* Отступы слева и справа */ }
+    </style> """
+
 # Стили заголовков и подзаголовков
 header_style = """
     <style>
@@ -52,7 +62,7 @@ subheader_style = """
 # Основная функция приложения
 def main():
     st.set_page_config(layout="wide")
-    st.markdown(""" <style> body { max-width: 1200px; /* Максимальная ширина */ margin-left: auto; margin-right: auto; padding: 30px; /* Отступы слева и справа */ } </style> """, unsafe_allow_html=True)
+    st.markdown(body_style, unsafe_allow_html=True)
     
     # Заголовок
     st.markdown(header_style, unsafe_allow_html=True)
