@@ -48,6 +48,7 @@ subheader_style = """
         .subheader h2 {
             font-family: 'Open Sans', sans-serif;
             font-size: 16px;
+            background-color: #ffb347;
             line-height: 24px;
             color: #666;
             margin-top: 20px;
