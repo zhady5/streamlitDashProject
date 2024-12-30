@@ -120,21 +120,7 @@ def main():
         with col2:
             st.write('col2')
 
-    # Стиль для окраски фона между контейнерами
-    st.markdown(
-        f""" <style> 
-        .reportview-container .main {{ background-color: #f9f9f9; }} 
-        .reportview-container 
-        .element-container:nth-child(even) {{ 
-                                            background-color: #ffc107; 
-                                            padding: 0px; 
-                                            border-radius: 10px; 
-                                            margin-top: 0px; 
-                                            margin-bottom: 0px; 
-               }} </style> """,
-        unsafe_allow_html=True,
-    )
-                  
+     
 
 if __name__ == "__main__":
     main()
