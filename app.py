@@ -56,54 +56,32 @@ subheader_style = """
 # Основная функция приложения
 def main():
    # st.set_page_config(layout="centered" )
-  # Устанавливаем стиль для увеличения ширины контейнера
-    st.markdown(
-    """ <style> .css-1y0tngm { width: 1800px; /* Задаем нужную ширину */ } </style> """,
-    unsafe_allow_html=True,
-    )
-    st.markdown(
-      """
-                <style>
-                 .block-container { padding: 10 !important; margin: 0 !important; } 
-                 .element-container { padding: 0 !important; margin: 0 !important;} 
-                
-                .reportview-container .markdown-text-container {
-                    font-family: monospace;
-                }
-                .sidebar .sidebar-content {
-                    background-image: linear-gradient(#2e7bcf,#2e7bcf);
-                    color: white;
-                }
-                .Widget>label {
-                    color: white;
-                    font-family: monospace;
-                }
-                [class^="st-b"]  {
-                    color: white;
-                    font-family: monospace;
-                }
-                .st-bb {
-                    background-color: #ffb347;
-                }
-                .st-at {
-                    background-color: #ffb347;
-                }
-                footer {
-                    font-family: monospace;
-                }
-                .reportview-container .main footer, .reportview-container .main footer a {
-                    color: #ffb347;
-                }
-                header .decoration {
-                    background-image: none;
-                }
+  # Применение пользовательского CSS
+  st.markdown("""
+  <style>
+      .reportview-container {
+          background-color: white;
+      }
+      .main {
+          background-color: white;
+      }
+      .stApp {
+          max-width: 1200px;
+          margin: 0 auto;
+          background-color: #ffb347;
+          padding: 2rem;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      
+      /* Медиа-запрос для мобильных устройств */
+      @media (max-width: 768px) {
+          .stApp {
+              padding: 1rem;
+          }
+      }
 
-                
-                </style>
-                """,
-      unsafe_allow_html=True,
-  )
-
+    </style>
+    """, unsafe_allow_html=True)
 
    # st.markdown(body_style, unsafe_allow_html=True)
     
