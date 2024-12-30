@@ -57,16 +57,45 @@ subheader_style = """
 def main():
     st.set_page_config(layout="centered" )
     st.markdown(
-    """ <style> :root { --primary-color: #d33682; --background-color: #ffb347; --secondary-background-color: #222222; --text-color: #ffffff; } </style> """,
-    unsafe_allow_html=True,
-      )
-    # Установка темы
-   # st.experimental_set_query_params(**{
-        #"theme.primaryColor": "#d33682",  # Основной цвет темы
-   #     "theme.backgroundColor": "#ffb347",  # Фоновый цвет дашборда
-        #"theme.secondaryBackgroundColor": "#222222",  # Вторичный фоновый цвет
-        #"theme.textColor": "#ffffff",  # Цвет текста
-    #})
+      """
+  <style>
+  .reportview-container .markdown-text-container {
+      font-family: monospace;
+  }
+  .sidebar .sidebar-content {
+      background-image: linear-gradient(#2e7bcf,#2e7bcf);
+      color: white;
+  }
+  .Widget>label {
+      color: white;
+      font-family: monospace;
+  }
+  [class^="st-b"]  {
+      color: white;
+      font-family: monospace;
+  }
+  .st-bb {
+      background-color: transparent;
+  }
+  .st-at {
+      background-color: #0c0080;
+  }
+  footer {
+      font-family: monospace;
+  }
+  .reportview-container .main footer, .reportview-container .main footer a {
+      color: #0c0080;
+  }
+  header .decoration {
+      background-image: none;
+  }
+  
+  </style>
+  """,
+      unsafe_allow_html=True,
+  )
+
+
    # st.markdown(body_style, unsafe_allow_html=True)
     
     # Заголовок
