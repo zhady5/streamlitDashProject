@@ -55,7 +55,7 @@ subheader_style = """
 
 # Основная функция приложения
 def main():
-   # st.set_page_config(layout="centered" )
+  st.set_page_config(layout="wide" )
   # Применение пользовательского CSS
   st.markdown("""
   <style>
