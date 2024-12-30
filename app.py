@@ -18,13 +18,7 @@ channels, posts, reactions, subscribers, views = load_data()
 processed_data = process_data(channels, posts, reactions, subscribers, views)
 
 
-body_style = """ 
-    <style> 
-      body { 
-        max-width: 1200px; /* Максимальная ширина */ 
-        background-сolor: #ffb347,
-        padding: 0px; /* Отступы слева и справа */ }
-    </style> """
+
 
 # Стили заголовков и подзаголовков
 header_style = """
@@ -69,7 +63,7 @@ def main():
         #"theme.secondaryBackgroundColor": "#222222",  # Вторичный фоновый цвет
         #"theme.textColor": "#ffffff",  # Цвет текста
     })
-    st.markdown(body_style, unsafe_allow_html=True)
+   # st.markdown(body_style, unsafe_allow_html=True)
     
     # Заголовок
     st.markdown(header_style, unsafe_allow_html=True)
