@@ -58,7 +58,7 @@ def main():
     st.set_page_config(layout="centered" )
   # Устанавливаем стиль для увеличения ширины контейнера
     st.markdown(
-    """ <style> .css-1y0tngm { max-width: 1800px; /* Задаем нужную ширину */ } </style> """,
+    """ <style> .css-1y0tngm { width: 1800px; /* Задаем нужную ширину */ } </style> """,
     unsafe_allow_html=True,
     )
     st.markdown(
