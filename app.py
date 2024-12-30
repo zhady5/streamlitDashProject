@@ -55,7 +55,7 @@ subheader_style = """
 
 # Основная функция приложения
 def main():
-    st.set_page_config(layout="centered" )
+   # st.set_page_config(layout="centered" )
   # Устанавливаем стиль для увеличения ширины контейнера
     st.markdown(
     """ <style> .css-1y0tngm { width: 1800px; /* Задаем нужную ширину */ } </style> """,
