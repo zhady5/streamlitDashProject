@@ -35,7 +35,7 @@ header_style = """
             line-height: 36px;
             color: #333;
             background-color: #ffb347;
-            padding: 20px;
+            padding: 0px;
             box-shadow: 0 10px 15px rgba(0,0,0,0.05);
             border-radius: 10px;
             text-align: center;
@@ -51,8 +51,8 @@ subheader_style = """
             background-color: #ffb347;
             line-height: 24px;
             color: #666;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin-top: 0px;
+            margin-bottom: 0px;
             font-weight: bold;
         }
     </style>
