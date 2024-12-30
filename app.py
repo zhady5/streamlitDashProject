@@ -59,6 +59,9 @@ def main():
     st.markdown(
       """
                 <style>
+                 .block-container { padding: 0 !important; margin: 0 !important; } 
+                 .element-container { padding: 0 !important; margin: 0 !important;} 
+                
                 .reportview-container .markdown-text-container {
                     font-family: monospace;
                 }
@@ -89,6 +92,7 @@ def main():
                 header .decoration {
                     background-image: none;
                 }
+
                 
                 </style>
                 """,
