@@ -119,7 +119,13 @@ def main():
                 st.plotly_chart(create_heatmap(filtered_df), use_container_width=True)
         with col2:
             st.write('col2')
-              
+
+    # Стиль для окраски фона между контейнерами
+    st.markdown(
+        f""" <style> .reportview-container .main {{ background-color: #f9f9f9; }} .reportview-container .element-container:nth-child(even) {{ background-color: #ffc107; padding: 20px; border-radius: 10px; margin-top: 20px; margin-bottom: 20px; }} </style> """,
+        unsafe_allow_html=True,
+    )
+                  
 
 if __name__ == "__main__":
     main()
