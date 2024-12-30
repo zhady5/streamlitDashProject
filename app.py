@@ -61,14 +61,14 @@ subheader_style = """
 
 # Основная функция приложения
 def main():
-    st.set_page_config(layout="centered",
-                        theme={
-                                    #"primaryColor": "#d33682",  # Основной цвет темы
-                                    "backgroundColor": "#ffb347",  # Фоновый цвет дашборда
-                                    #"secondaryBackgroundColor": "#222222",  # Вторичный фоновый цвет
-                                    #"textColor": "#ffffff",  # Цвет текста
-                                },
-                      )
+    st.set_page_config(layout="centered" )
+    # Установка темы
+    st.experimental_set_query_params(**{
+        #"theme.primaryColor": "#d33682",  # Основной цвет темы
+        "theme.backgroundColor": "#ffb347",  # Фоновый цвет дашборда
+        #"theme.secondaryBackgroundColor": "#222222",  # Вторичный фоновый цвет
+        #"theme.textColor": "#ffffff",  # Цвет текста
+    })
     st.markdown(body_style, unsafe_allow_html=True)
     
     # Заголовок
