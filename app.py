@@ -58,13 +58,13 @@ def main():
     st.set_page_config(layout="centered" )
   # Устанавливаем стиль для увеличения ширины контейнера
     st.markdown(
-    """ <style> .css-1y0tngm { max-width: 1200px; /* Задаем нужную ширину */ } </style> """,
+    """ <style> .css-1y0tngm { max-width: 1800px; /* Задаем нужную ширину */ } </style> """,
     unsafe_allow_html=True,
     )
     st.markdown(
       """
                 <style>
-                 .block-container { padding: 0 !important; margin: 0 !important; } 
+                 .block-container { padding: 10 !important; margin: 0 !important; } 
                  .element-container { padding: 0 !important; margin: 0 !important;} 
                 
                 .reportview-container .markdown-text-container {
