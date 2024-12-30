@@ -55,33 +55,33 @@ subheader_style = """
 
 # Основная функция приложения
 def main():
-  st.set_page_config(layout="wide" )
+    st.set_page_config(layout="wide" )
   # Применение пользовательского CSS
-  st.markdown("""
-  <style>
-      .reportview-container {
-          background-color: white;
-      }
-      .main {
-          background-color: white;
-      }
-      .stApp {
-          max-width: 1200px;
-          margin: 0 auto;
-          background-color: #ffb347;
-          padding: 2rem;
-          box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      }
-      
-      /* Медиа-запрос для мобильных устройств */
-      @media (max-width: 768px) {
-          .stApp {
-              padding: 1rem;
-          }
-      }
-
-    </style>
-    """, unsafe_allow_html=True)
+    st.markdown("""
+    <style>
+        .reportview-container {
+            background-color: white;
+        }
+        .main {
+            background-color: white;
+        }
+        .stApp {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffb347;
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Медиа-запрос для мобильных устройств */
+        @media (max-width: 768px) {
+            .stApp {
+                padding: 1rem;
+            }
+        }
+  
+      </style>
+      """, unsafe_allow_html=True)
 
    # st.markdown(body_style, unsafe_allow_html=True)
     
