@@ -87,7 +87,8 @@ def create_heatmap(filtered_df):
         font_size=9,
         yaxis_title="Дата",
         xaxis_title="Часы",
-        yaxis=dict(autorange="reversed")  # tickangle=45,  # Наклон меток для улучшения читаемости
+        yaxis=dict(autorange="reversed"),  # tickangle=45,  # Наклон меток для улучшения читаемости
+        showAxisLabels=True
     )
 
     return fig
