@@ -146,13 +146,13 @@ def main():
 
         # Фильтрация данных в зависимости от выбранной кнопки
         if st.session_state.button_state == "3д":
-            filtered_df =  df[(df.channel_name == channel)&(pd.to_datetime(df.post_datetime.str[:10])>=date_ago('days', 2))]
+            filtered_df =  df[(df.channel_name == selected_channel)&(pd.to_datetime(df.post_datetime.str[:10])>=date_ago('days', 2))]
         elif st.session_state.button_state == "1н":
-            filtered_df = df[(df.channel_name == channel)&(pd.to_datetime(df.post_datetime.str[:10])>=date_ago('weeks', 1))]
+            filtered_df = df[(df.channel_name == selected_channel)&(pd.to_datetime(df.post_datetime.str[:10])>=date_ago('weeks', 1))]
         elif st.session_state.button_state == "1м":
-            filtered_df = df[(df.channel_name == channel)&(pd.to_datetime(df.post_datetime.str[:10])>=date_ago('months', 1))]
+            filtered_df = df[(df.channel_name == selected_channel)&(pd.to_datetime(df.post_datetime.str[:10])>=date_ago('months', 1))]
         else:  # "all (6м)"
-            filtered_df = df[(df.channel_name == channel)&(pd.to_datetime(df.post_datetime.str[:10])>=date_ago('months', 6))]
+            filtered_df = df[(df.channel_name == selected_channel)&(pd.to_datetime(df.post_datetime.str[:10])>=date_ago('months', 6))]
         # Отображение тепловой карты
         st.plotly_chart(create_bubble_fig(filtered_df), use_container_width=True)
         
