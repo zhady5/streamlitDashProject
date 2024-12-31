@@ -73,12 +73,12 @@ def create_slider(subs, channel):
     step = 86400 # секунд в одни сутки
     
     # Определяем начальные значения слайдера
-    initial_value = [0, time_delta]
+    initial_value = [int(0), int(time_delta)]
     
     # Отображаем слайдер
     return st.slider(
                         'Выберите диапазон дат:',
-                        min_value=0,
+                        min_value=int(0),
                         max_value=int(time_delta),
                         value=initial_value,
                         step=int(step)
