@@ -107,7 +107,7 @@ def main():
     with col1:
         st.plotly_chart(fig_posts, use_container_width=True)
         st.plotly_chart(fig_subs_pos_neg, use_container_width=True)
-        st.write(slider)
+        #st.write(slider)
     with col2:
         st.plotly_chart(fig_subs, use_container_width=True)
         
