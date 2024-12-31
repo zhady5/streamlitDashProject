@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 from datetime import datetime, timedelta
 
 
-def create_subs_pos_neg(subs, channel, slider_range):
+def create_subs_pos_neg(subs, channel): #, slider_range
     if channel is None or slider_range is None:
         st.write({})  # Вывод пустой фигуры
         return
