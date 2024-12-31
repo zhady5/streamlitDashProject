@@ -79,6 +79,27 @@ def main():
                 padding: 1rem;
             }
         }
+
+        /* Стили для кнопок */
+        .stButton > button {
+            background-color: #f5dfbf;
+            color: #333;
+            border: 2px solid #e0c9a6;
+            border-radius: 5px;
+            padding: 0.3rem 1rem;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .stButton > button:hover {
+            background-color: #e0c9a6;
+            border-color: #d1b894;
+        }
+        .stButton > button:active {
+            background-color: #d1b894;
+            border-color: #c2a782;
+        }
+
   
       </style>
       """, unsafe_allow_html=True)
