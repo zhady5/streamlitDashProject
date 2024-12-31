@@ -67,7 +67,7 @@ def main():
         }
         
         /* Стили для кнопок */
-        .stButton > button {
+        .custom-button {
             background-color: #f5dfbf;
             color: #333;
             border: 1px solid #e0c9a6;
@@ -77,20 +77,21 @@ def main():
             font-weight: 600;
             transition: all 0.3s ease;
             margin-right: -1px;
+            cursor: pointer;
         }
-        .stButton > button:first-child {
+        .custom-button:first-child {
             border-top-left-radius: 3px;
             border-bottom-left-radius: 3px;
         }
-        .stButton > button:last-child {
+        .custom-button:last-child {
             border-top-right-radius: 3px;
             border-bottom-right-radius: 3px;
         }
-        .stButton > button:hover {
+        .custom-button:hover {
             background-color: #e0c9a6;
             border-color: #d1b894;
         }
-        .stButton > button:active, .stButton > button.active {
+        .custom-button.active {
             background-color: #d1b894;
             border-color: #c2a782;
             z-index: 1;
@@ -108,7 +109,7 @@ def main():
             .stApp {
                 padding: 1rem;
             }
-            .stButton > button {
+            .custom-button {
                 padding: 1px 3px;
                 font-size: 8px;
             }
@@ -149,19 +150,9 @@ def main():
         
         # Кнопки для выбора периода
         st.markdown('<div class="button-container">', unsafe_allow_html=True)
-        col1, col2, col3, col4 = st.columns(4)
-        with col1:
-            if st.button("3д", key="3d", help="Показать данные за последние 3 дня"):
-                st.session_state.button_state = "3д"
-        with col2:
-            if st.button("1н", key="1w", help="Показать данные за последнюю неделю"):
-                st.session_state.button_state = "1н"
-        with col3:
-            if st.button("1м", key="1m", help="Показать данные за последний месяц"):
-                st.session_state.button_state = "1м"
-        with col4:
-            if st.button("all (6м)", key="6m", help="Показать данные за последние 6 месяцев"):
-                st.session_state.button_state = "all (6м)"
+        for period, label in [("3д", "3д"), ("1н", "1н"), ("1м", "1м"), ("all (6м)", "all (6м)")]:
+            button_class = "custom-button active" if st.session_state.button_state == period else "custom-button"
+            st.markdown(f'<button class="{button_class}" onclick="handleButtonClick(\'{period}\')">{label}</button>', unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
         # Фильтрация данных в зависимости от выбранной кнопки
@@ -181,17 +172,35 @@ def main():
         # Отображение тепловой карты
         st.plotly_chart(create_heatmap(filtered_df), use_container_width=True)
 
-    # Добавляем JavaScript для стилизации активной кнопки
-    st.markdown(f"""
+    # Добавляем JavaScript для обработки кликов по кнопкам и обновления состояния
+    st.markdown("""
     <script>
-        var buttons = document.querySelectorAll('.stButton button');
-        buttons.forEach(function(button) {{
-            if (button.innerText === '{st.session_state.button_state}') {{
+    function handleButtonClick(period) {
+        // Обновляем состояние кнопок
+        var buttons = document.querySelectorAll('.custom-button');
+        buttons.forEach(function(button) {
+            button.classList.remove('active');
+            if (button.innerText === period) {
                 button.classList.add('active');
-            }} else {{
+            }
+        });
+        
+        // Отправляем событие в Streamlit
+        var event = new CustomEvent('streamlit:buttonClicked', { detail: period });
+        window.dispatchEvent(event);
+    }
+
+    // Слушаем события от Streamlit
+    window.addEventListener('streamlit:render', function(event) {
+        var buttons = document.querySelectorAll('.custom-button');
+        buttons.forEach(function(button) {
+            if (button.innerText === '""" + st.session_state.button_state + """') {
+                button.classList.add('active');
+            } else {
                 button.classList.remove('active');
-            }}
-        }});
+            }
+        });
+    });
     </script>
     """, unsafe_allow_html=True)
 
