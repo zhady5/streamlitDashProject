@@ -104,7 +104,7 @@ def main():
         
         # Кнопки для выбора периода
         st.markdown('<div class="button-container">', unsafe_allow_html=True)
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2, col3, col4 = st.columns(8)
         with col1:
             if st.button("3д", key="3d"):
                 st.session_state.button_state = "3д"
@@ -117,6 +117,14 @@ def main():
         with col4:
             if st.button("all (6м)", key="6m"):
                 st.session_state.button_state = "all (6м)"
+        with col5:
+            st.empty()
+        with col6:
+            st.empty()   
+        with col7:
+            st.empty()
+        with col8:
+            st.empty()              
         st.markdown('</div>', unsafe_allow_html=True)
 
         # Фильтрация данных в зависимости от выбранной кнопки
