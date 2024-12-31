@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 
-# Загрузка данных
-subs = ...  # Здесь должны быть данные
 
 def create_subs_pos_neg(subs, channel, slider_range):
     if channel is None or slider_range is None:
