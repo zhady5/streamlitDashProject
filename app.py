@@ -107,7 +107,6 @@ def main():
         st.plotly_chart(fig_posts, use_container_width=True)
         slider = create_slider(subs, selected_channel)
         fig_subs_pos_neg = create_subs_pos_neg(subs, selected_channel, slider)
-        slider
         st.plotly_chart(fig_subs_pos_neg, use_container_width=True)
     with col2:
         st.plotly_chart(fig_subs, use_container_width=True)
