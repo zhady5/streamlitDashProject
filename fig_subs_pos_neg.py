@@ -56,33 +56,26 @@ def create_subs_pos_neg(subs, channel, slider_range):
     )
     return fig
 
-def update_slider_marks(subs, channel):
-    if channel is None:
-        st.write({})  # Вывод пустой разметки
-        return
-
-    subdf_channel = subs[subs['channel_name'] == channel]
-    dates = sorted(subdf_channel.date)
-    # Преобразуем список строк в список дат
-    dates = [pd.to_datetime(str(date)) for date in dates]
-    date_min = min(dates)
-
-    if len(dates) > 0:
-        marks = {
-            int((date - date_min).total_seconds()): {
-                'label': date.strftime("%b %d"), #format_date(date, "MMM d", locale='ru_RU').title(),
-                'style': {
-                    'fontSize': '12px',
-                    'color': 'black',
-                    'backgroundColor': '#f5dfbf', #'white',
-                    'borderRadius': '5px',
-                    'padding': '2px',
-                    'display': 'block',
-                    'width': 'auto',
-                    'transform': 'translateX(-50%)'
-                }
-            } for date in dates[::len(dates)//6]
-        }
-    else:
-        marks = {}
-    return marks
+def create_slider(subs):
+     # Получаем минимальную и максимальную дату
+    date_min = subs['datetime'].min()
+    date_max = subs['datetime'].max()
+    
+    # Создаем интервал между минимальной и максимальной датой
+    time_delta = (date_max - date_min).total_seconds()
+    
+    # Разделим временной промежуток на шаги для слайдера
+    step = 86400 # секунд в одни сутки
+    
+    # Определяем начальные значения слайдера
+    initial_value = [0, time_delta]
+    
+    # Отображаем слайдер
+    return st.slider(
+                        'Выберите диапазон дат:',
+                        min_value=0,
+                        max_value=int(time_delta),
+                        value=initial_value,
+                        step=int(step),
+                        format_func=lambda x: date_min + pd.Timedelta(seconds=x)
+                    )   
