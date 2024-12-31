@@ -146,7 +146,7 @@ def update_slider_marks(subs, channel):
 
     # Преобразуем строки в даты
     dates = [
-        datetime.datetime.strptime(str(date), "%Y-%m-%d") for date in dates
+        datetime.strptime(str(date), "%Y-%m-%d") for date in dates
     ]
 
     date_min = min(dates)
