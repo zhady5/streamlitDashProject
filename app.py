@@ -43,8 +43,8 @@ st.markdown("""
         max-width: 1200px;
         margin: 0 auto;
         background-color: #ffb347;
-        padding: 2rem;
-        box-shadow: 0 0 1px rgba(0,0,0,0.1);
+        padding: 1rem;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     .button-container {
         display: flex;
