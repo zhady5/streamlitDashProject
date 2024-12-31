@@ -4,12 +4,9 @@ from datetime import date
 import dash
 
 from data_processing import load_data, process_data
-
-from functions import date_ago, convert_date, get_gradient_color, get_current_previous_sums, create_table, hex_to_rgb\
-                            , interpolate_color, gradient_color_func \
-                        , calculate_mean_max_subs, calculate_mean_posts, calculate_mean_views, calculate_mean_reacts\
-                        , load_stopwords_from_file
-
+from functions import date_ago, convert_date, get_gradient_color, get_current_previous_sums, create_table, hex_to_rgb, \
+    interpolate_color, gradient_color_func, calculate_mean_max_subs, calculate_mean_posts, calculate_mean_views, \
+    calculate_mean_reacts, load_stopwords_from_file
 from fig_posts_inds import create_fig_posts_inds
 from fig_subs_inds import create_fig_subs_inds
 from fig_heatmap import create_heatmap
@@ -75,11 +72,11 @@ def main():
             color: #333;
             border: 1px solid #e0c9a6;
             border-radius: 0;
-            padding: 0.1rem 0.33rem;
-            font-size: 5px;
+            padding: 2px 6px;
+            font-size: 10px;
             font-weight: 600;
             transition: all 0.3s ease;
-            margin-right: -1px; /* Отрицательный отступ справа для наложения границ */
+            margin-right: -1px;
         }
         .stButton > button:first-child {
             border-top-left-radius: 3px;
@@ -96,17 +93,24 @@ def main():
         .stButton > button:active, .stButton > button.active {
             background-color: #d1b894;
             border-color: #c2a782;
-            z-index: 1; /* Поднимаем активную кнопку над остальными */
+            z-index: 1;
         }
-
+        
+        /* Стили для контейнера кнопок */
+        .button-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 10px;
+        }
+        
         /* Медиа-запрос для мобильных устройств */
         @media (max-width: 768px) {
             .stApp {
                 padding: 1rem;
             }
             .stButton > button {
-                padding: 0.07rem 0.17rem;
-                font-size: 4px;
+                padding: 1px 3px;
+                font-size: 8px;
             }
         }
     </style>
@@ -136,32 +140,29 @@ def main():
 
     filtered_df = pd.DataFrame()
 
-    with st.container():
-        # Размещение графиков на одной строке
-        col1, col2 = st.columns(2)
-        with col1:
-            st.plotly_chart(fig_posts, use_container_width=True)
-        with col2:
-            st.plotly_chart(fig_subs, use_container_width=True)
-
-    with st.container():
+    # Размещение графиков на одной строке
+    col1, col2 = st.columns(2)
+    with col1:
+        st.plotly_chart(fig_posts, use_container_width=True)
+    with col2:
+        st.plotly_chart(fig_subs, use_container_width=True)
+        
         # Кнопки для выбора периода
-        col_buttons = st.columns([1, 3])  # Создаем две колонки: одну для кнопок, другую для графиков
-        with col_buttons[0]:
-            st.write("Период:")
-            col1, col2, col3, col4 = st.columns(4)
-            with col1:
-                if st.button("3д", key="3d", help="Показать данные за последние 3 дня"):
-                    st.session_state.button_state = "3д"
-            with col2:
-                if st.button("1н", key="1w", help="Показать данные за последнюю неделю"):
-                    st.session_state.button_state = "1н"
-            with col3:
-                if st.button("1м", key="1m", help="Показать данные за последний месяц"):
-                    st.session_state.button_state = "1м"
-            with col4:
-                if st.button("all (6м)", key="6m", help="Показать данные за последние 6 месяцев"):
-                    st.session_state.button_state = "all (6м)"
+        st.markdown('<div class="button-container">', unsafe_allow_html=True)
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            if st.button("3д", key="3d", help="Показать данные за последние 3 дня"):
+                st.session_state.button_state = "3д"
+        with col2:
+            if st.button("1н", key="1w", help="Показать данные за последнюю неделю"):
+                st.session_state.button_state = "1н"
+        with col3:
+            if st.button("1м", key="1m", help="Показать данные за последний месяц"):
+                st.session_state.button_state = "1м"
+        with col4:
+            if st.button("all (6м)", key="6m", help="Показать данные за последние 6 месяцев"):
+                st.session_state.button_state = "all (6м)"
+        st.markdown('</div>', unsafe_allow_html=True)
 
         # Фильтрация данных в зависимости от выбранной кнопки
         if st.session_state.button_state == "3д":
@@ -177,10 +178,8 @@ def main():
             filtered_df = posts[(posts.channel_name == selected_channel) &
                                 (pd.to_datetime(posts.date) >= date_ago('months', 6))]
 
-        # Отображение графиков
-        with col_buttons[1]:
-            st.plotly_chart(create_heatmap(filtered_df), use_container_width=True)
-
+        # Отображение тепловой карты
+        st.plotly_chart(create_heatmap(filtered_df), use_container_width=True)
 
     # Добавляем JavaScript для стилизации активной кнопки
     st.markdown(f"""
