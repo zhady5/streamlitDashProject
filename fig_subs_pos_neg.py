@@ -62,8 +62,8 @@ def create_slider(subs, channel):
 
     subs = subs[subs['channel_name'] == channel]    
      # Получаем минимальную и максимальную дату
-    date_min = pd.to_datetime(subs['datetime']).min().strftime('%b %d, %H:%M')
-    date_max = pd.to_datetime(subs['datetime']).max().strftime('%b %d, %H:%M')
+    date_min = pd.to_datetime(subs['datetime']).min()
+    date_max = pd.to_datetime(subs['datetime']).max()
     
     # Создаем интервал между минимальной и максимальной датой
     time_delta = (date_max - date_min).total_seconds()
@@ -73,16 +73,22 @@ def create_slider(subs, channel):
     
     # Определяем начальные значения слайдера
     #initial_value = [int(0), int(time_delta)]
-    initial_value = [date_min, date_max]
+    
+    # Конвертируем минимальную и максимальную дату в секунды от начала эпохи (1970-01-01)
+    min_value = int(date_min.timestamp())
+    max_value = int(date_max.timestamp())
+    # Начальное значение также должно быть в секундах
+    initial_value = [min_value, max_value]
 
     
     # Отображаем слайдер
     return st.slider(
                         'Выберите диапазон дат:',
-                        min_value=date_min,
-                        max_value=date_max,
+                        min_value=min_value,
+                        max_value=max_value,
                         value=initial_value,
-                        step=step
+                        step=step,
+                        format='Date: %Y-%m-%d'
                     )   
 
         # Функция для генерации меток
