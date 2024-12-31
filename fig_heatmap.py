@@ -70,7 +70,7 @@ def create_heatmap(filtered_df):
         y_labels_subset = y_labels
     
     # Перемещение подписей часов наверх
-    fig.update_xaxes(side="top", tickfont=dict(family='Arial', size=8), title_font=dict(family='Arial', size=10))
+    fig.update_xaxes(side="top", dtick=1) #tickfont=dict(family='Arial', size=8), title_font=dict(family='Arial', size=10)
     
     fig.update_yaxes(
         #autorange="reversed",
