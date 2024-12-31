@@ -158,7 +158,7 @@ def main():
         # Обновление состояния кнопки
         if st.session_state.button_state != st.session_state.get('prev_button_state'):
             st.session_state.prev_button_state = st.session_state.button_state
-            st.experimental_rerun()
+            st.rerun()
 
         # Фильтрация данных в зависимости от выбранной кнопки
         if st.session_state.button_state == "3д":
