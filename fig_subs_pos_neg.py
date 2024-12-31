@@ -74,6 +74,7 @@ def create_slider(subs, channel):
     
     # Определяем начальные значения слайдера
     initial_value = [int(0), int(time_delta)]
+
     
     # Отображаем слайдер
     return st.slider(
@@ -83,3 +84,12 @@ def create_slider(subs, channel):
                         value=initial_value,
                         step=int(step)
                     )   
+
+        # Функция для генерации меток
+def generate_labels(subs):
+    labels = []
+    for date in subs['datetime']:
+        labels.append(st.markdown(f"**{date.strftime('%b %d, %H:%M')}**"))
+    return labels
+
+    
