@@ -103,23 +103,12 @@ def main():
 
     # Размещение графиков на одной строке
     col1, col2 = st.columns(2)
-    with col1:
+    with col1:    
         st.plotly_chart(fig_posts, use_container_width=True)
-        
-        # Создаём базовую версию графика fig_subs_pos_neg без учёта слайдера
-        fig_subs_pos_neg = create_subs_pos_neg(subs, selected_channel, (None, None))
-        st.plotly_chart(fig_subs_pos_neg, use_container_width=True)
-        
-        # Создаём слайдер
         slider = create_slider(subs, selected_channel)
-        
-        # Обновляем график fig_subs_pos_neg с учётом значений слайдера
         fig_subs_pos_neg = create_subs_pos_neg(subs, selected_channel, slider)
-        st.experimental_rerun()       
-        #st.plotly_chart(fig_posts, use_container_width=True)
-        #slider = create_slider(subs, selected_channel)
-        #fig_subs_pos_neg = create_subs_pos_neg(subs, selected_channel, slider)
-        #st.plotly_chart(fig_subs_pos_neg, use_container_width=True)
+        st.plotly_chart(fig_subs_pos_neg, use_container_width=True)
+        st.plotly_chart(slider)
     with col2:
         st.plotly_chart(fig_subs, use_container_width=True)
         
