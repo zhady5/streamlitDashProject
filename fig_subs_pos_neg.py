@@ -56,7 +56,7 @@ def create_subs_pos_neg(subs, channel, slider_range):
     )
     return fig
 
-def update_slider_marks(channel):
+def update_slider_marks(subs, channel):
     if channel is None:
         st.write({})  # Вывод пустой разметки
         return
