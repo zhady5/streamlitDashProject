@@ -110,13 +110,13 @@ def main():
         slider_marks = update_slider_marks(subs, selected_channel)
     
         # Создание слайдера
-        st.sidebar.markdown("### Выберите диапазон дат:")
+        st.sidebar.markdown("Выберите диапазон дат:")
         slider = st.sidebar.slider(
             label="Диапазон дат:",
             min_value=min(slider_marks.keys()),
             max_value=max(slider_marks.keys()),
             value=(min(slider_marks.keys()), max(slider_marks.keys())),
-            format_func=lambda x: slider_marks[x]["label"],
+            format=lambda x: slider_marks[x]["label"],
             step=None,
         )
             
