@@ -81,6 +81,5 @@ def create_slider(subs, channel):
                         min_value=0,
                         max_value=int(time_delta),
                         value=initial_value,
-                        step=int(step),
-                        format_func=lambda x: date_min + pd.Timedelta(seconds=x)
+                        step=int(step)
                     )   
