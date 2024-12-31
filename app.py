@@ -50,7 +50,7 @@ st.markdown("""
         display: inline;
         justify-content: flex-start;
         gap: 0px;
-        margin-bottom: 5px;
+        margin-bottom: 0px;
     }
     .stButton > button {
         background-color: #f5dfbf;
