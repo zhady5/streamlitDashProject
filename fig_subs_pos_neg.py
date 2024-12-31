@@ -95,7 +95,7 @@ def create_slider(subs, channel):
                         value=initial_value,
                         step=step,
                         #format='Date: %Y-%m-%d'
-                        format_func  = format_label
+                        format  = format_label
                     )   
 
         # Функция для генерации меток
