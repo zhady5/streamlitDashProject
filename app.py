@@ -49,7 +49,7 @@ st.markdown("""
     .button-container {
         display: flex;
         justify-content: flex-start;
-        gap: 10px;
+        gap: 1px;
         margin-bottom: 10px;
     }
     .stButton > button {
