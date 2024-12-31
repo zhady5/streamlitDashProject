@@ -96,7 +96,7 @@ def main():
     
     fig_posts = create_fig_posts_inds(posts, selected_channel)
     fig_subs = create_fig_subs_inds(subs, selected_channel)
-    slider = update_slider_marks(subs, selected_channel)
+    slider = create_slider(subs, selected_channel)
     fig_subs_pos_neg = create_subs_pos_neg(subs, selected_channel, slider)
     # Инициализация состояния кнопок
     if 'button_state' not in st.session_state:
