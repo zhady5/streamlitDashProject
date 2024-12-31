@@ -56,7 +56,12 @@ def create_subs_pos_neg(subs, channel, slider_range):
     )
     return fig
 
-def create_slider(subs):
+def create_slider(subs, channel):
+    if channel is None or slider_range is None:
+        st.write({})  # Вывод пустой фигуры
+        return
+
+    subs = subs[subs['channel_name'] == channel]    
      # Получаем минимальную и максимальную дату
     date_min = subs['datetime'].min()
     date_max = subs['datetime'].max()
