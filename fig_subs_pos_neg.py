@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
+from datetime import datetime, timedelta
 
 
 def create_subs_pos_neg(subs, channel, slider_range):
@@ -92,10 +93,47 @@ def create_slider(subs, channel):
                     )   
 
         # Функция для генерации меток
-def generate_labels(subs):
-    labels = []
-    for date in pd.to_datetime(subs['datetime']):
-        labels.append(st.markdown(f"**{date.strftime('%b %d, %H:%M')}**"))
-    return labels
+
+
+def create_slider2(subs, channel):
+    if channel is None:
+        st.write({})  # Вывод пустой фигуры
+        return
+
+    subs = subs[subs['channel_name'] == channel]    
+    # Получаем минимальную и максимальную дату
+    date_min = pd.to_datetime(subs['datetime']).min()
+    date_max = pd.to_datetime(subs['datetime']).max()
+    
+    # Создаем интервал между минимальной и максимальной датой
+    time_delta = (date_max - date_min).days
+    
+    # Разделим временной промежуток на шаги для слайдера
+    step = 1  # шаг в 1 день
+    
+    # Определяем начальные значения слайдера
+    min_value = 0
+    max_value = time_delta
+    initial_value = [min_value, max_value]
+    
+    # Функция для форматирования дат на слайдере
+    def format_func(x):
+        return (date_min + timedelta(days=x)).strftime('%Y-%m-%d')
+    
+    # Отображаем слайдер
+    selected_range = st.slider(
+        'Выберите диапазон дат:',
+        min_value=min_value,
+        max_value=max_value,
+        value=initial_value,
+        step=step,
+        format=format_func
+    )
+    
+    # Преобразуем выбранный диапазон обратно в даты
+    start_date = date_min + timedelta(days=selected_range[0])
+    end_date = date_min + timedelta(days=selected_range[1])
+    
+    return [start_date, end_date]
 
     
