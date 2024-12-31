@@ -48,7 +48,7 @@ def create_heatmap(filtered_df):
         ]
     ).update_layout(
         font_family='Arial',
-        margin=dict(l=30, r=50, t=10, b=20),
+        margin=dict(l=30, r=50, t=0, b=20),
         paper_bgcolor='#ffb347',
         plot_bgcolor='#ffb347',
         legend_title_font_color="#212121",
