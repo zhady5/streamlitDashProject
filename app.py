@@ -105,7 +105,22 @@ def main():
     col1, col2 = st.columns(2)
     with col1:    
         st.plotly_chart(fig_posts, use_container_width=True)
-        slider = create_slider2(subs, selected_channel)
+
+        # Получение меток для слайдера
+        slider_marks = update_slider_marks(selected_channel)
+    
+        # Создание слайдера
+        st.sidebar.markdown("### Выберите диапазон дат:")
+        slider = st.sidebar.slider(
+            label="Диапазон дат:",
+            min_value=min(slider_marks.keys()),
+            max_value=max(slider_marks.keys()),
+            value=(min(slider_marks.keys()), max(slider_marks.keys())),
+            format_func=lambda x: slider_marks[x]["label"],
+            step=None,
+        )
+            
+        #slider = create_slider2(subs, selected_channel)
         fig_subs_pos_neg = create_subs_pos_neg(subs, selected_channel, slider)
         st.plotly_chart(fig_subs_pos_neg, use_container_width=True)
     with col2:
