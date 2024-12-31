@@ -108,6 +108,9 @@ def main():
         slider = create_slider(subs, selected_channel)
         # Вызов функции для генерации меток
         labels = generate_labels(subs)
+        # Отображение меток под слайдером
+        for label in labels:
+            st.write(label)
         fig_subs_pos_neg = create_subs_pos_neg(subs, selected_channel, slider)
         st.plotly_chart(fig_subs_pos_neg, use_container_width=True)
         #st.write(slider)
