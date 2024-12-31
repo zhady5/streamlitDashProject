@@ -155,6 +155,11 @@ def main():
             st.markdown(f'<button class="{button_class}" onclick="handleButtonClick(\'{period}\')">{label}</button>', unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
+        # Обновление состояния кнопки
+        if st.session_state.button_state != st.session_state.get('prev_button_state'):
+            st.session_state.prev_button_state = st.session_state.button_state
+            st.experimental_rerun()
+
         # Фильтрация данных в зависимости от выбранной кнопки
         if st.session_state.button_state == "3д":
             filtered_df = posts[(posts.channel_name == selected_channel) &
@@ -186,7 +191,13 @@ def main():
         });
         
         // Отправляем событие в Streamlit
-        var event = new CustomEvent('streamlit:buttonClicked', { detail: period });
+        var event = new CustomEvent('streamlit:setComponentValue', {
+            detail: {
+                value: period,
+                dataType: 'str',
+                key: 'button_state'
+            }
+        });
         window.dispatchEvent(event);
     }
 
