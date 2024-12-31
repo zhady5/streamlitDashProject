@@ -88,7 +88,7 @@ def create_slider(subs, channel):
         # Функция для генерации меток
 def generate_labels(subs):
     labels = []
-    for date in subs['datetime']:
+    for date in pd.to_datetime(subs['datetime']):
         labels.append(st.markdown(f"**{date.strftime('%b %d, %H:%M')}**"))
     return labels
 
