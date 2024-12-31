@@ -38,6 +38,7 @@ def create_subs_pos_neg(subs, channel, slider_range):
         margin=dict(l=40, r=60, t=40, b=10),
         yaxis_title="Изменение подписок",
         xaxis_title="Дата и время",
+        title = '',
         xaxis=dict(
             rangeselector=dict(  # Добавляем элементы управления диапазоном
                 bgcolor= '#f5dfbf' ,  # Фоновый цвет области с кнопками
