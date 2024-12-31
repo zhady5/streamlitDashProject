@@ -27,7 +27,7 @@ st.markdown("""
         padding: 0px;
         box-shadow: 0 10px 15px rgba(0,0,0,0.05);
         border-radius: 10px;
-        text-align: center;
+        text-align: left;
     }
     .subheader h2 {
         font-family: 'Open Sans', sans-serif;
@@ -50,15 +50,15 @@ st.markdown("""
         display: inline;
         justify-content: flex-start;
         gap: 1px;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
     .stButton > button {
         background-color: #f5dfbf;
         color: #333;
-        border: 1px solid #e0c9a6;
-        border-radius: 3px;
+        border: 0.5px solid #e0c9a6;
+        border-radius: 1px;
         padding: 0px 0px;
-        font-size: 6px;
+        font-size: 4px;
         font-weight: 400;
     }
     .stButton > button:hover {
