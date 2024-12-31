@@ -136,4 +136,41 @@ def create_slider2(subs, channel):
     
     return [start_date, end_date]
 
+
+def update_slider_marks(subs, channel):
+    if channel is None:
+        return {}
+
+    subdf_channel = subs[subs["channel_name"] == channel]
+    dates = sorted(subdf_channel["date"])
+
+    # Преобразуем строки в даты
+    dates = [
+        datetime.datetime.strptime(str(date), "%Y-%m-%d") for date in dates
+    ]
+
+    date_min = min(dates)
+
+    if len(dates) > 0:
+        marks = {
+            int((date - date_min).total_seconds()): {
+                "label": date.strftime("%b %d"),
+                "style": {
+                    "fontSize": "12px",
+                    "color": "black",
+                    "backgroundColor": "#f5dfbf",
+                    "borderRadius": "5px",
+                    "padding": "2px",
+                    "display": "block",
+                    "width": "auto",
+                    "transform": "translateX(-50%)",
+                },
+            }
+            for date in dates[:: max(1, len(dates) // 6)]
+        }
+    else:
+        marks = {}
+
+    return marks
+
     
