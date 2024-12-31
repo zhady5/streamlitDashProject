@@ -10,7 +10,7 @@ from functions import date_ago, convert_date, get_gradient_color, get_current_pr
 from fig_posts_inds import create_fig_posts_inds
 from fig_subs_inds import create_fig_subs_inds
 from fig_heatmap import create_heatmap
-from fig_subs_pos_neg import create_subs_pos_neg, create_slider, generate_labels
+from fig_subs_pos_neg import create_subs_pos_neg, create_slider, create_slider2
 
 channels, posts, reactions, subscribers, views = load_data()
 processed_data = process_data(channels, posts, reactions, subscribers, views)
@@ -105,7 +105,7 @@ def main():
     col1, col2 = st.columns(2)
     with col1:    
         st.plotly_chart(fig_posts, use_container_width=True)
-        slider = create_slider(subs, selected_channel)
+        slider = create_slider2(subs, selected_channel)
         fig_subs_pos_neg = create_subs_pos_neg(subs, selected_channel, slider)
         st.plotly_chart(fig_subs_pos_neg, use_container_width=True)
     with col2:
