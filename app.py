@@ -107,7 +107,7 @@ def main():
         st.plotly_chart(fig_posts, use_container_width=True)
 
         # Получение меток для слайдера
-        slider_marks = update_slider_marks(selected_channel)
+        slider_marks = update_slider_marks(subs, selected_channel)
     
         # Создание слайдера
         st.sidebar.markdown("### Выберите диапазон дат:")
