@@ -72,13 +72,15 @@ def create_slider(subs, channel):
     step = 86400 # секунд в одни сутки
     
     # Определяем начальные значения слайдера
-    #initial_value = [int(0), int(time_delta)]
+    min_value = int(0)
+    max_value = int(time_delta)
+    initial_value = [min_value, max_value]
     
     # Конвертируем минимальную и максимальную дату в секунды от начала эпохи (1970-01-01)
-    min_value = int(date_min.timestamp())
-    max_value = int(date_max.timestamp())
+    #min_value = int(date_min.timestamp())
+    #max_value = int(date_max.timestamp())
     # Начальное значение также должно быть в секундах
-    initial_value = [min_value, max_value]
+    #initial_value = [min_value, max_value]
 
     
     # Отображаем слайдер
