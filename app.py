@@ -58,8 +58,9 @@ st.markdown("""
         border: 0.5px solid #e0c9a6;
         border-radius: 10px;
         padding: 0px 0px;
-        font-size: 4px;
+        font-size: 8px;
         font-weight: 200;
+        font-family: 'Roboto', sans-serif;
     }
     .stButton > button:hover {
         background-color: #e0c9a6;
