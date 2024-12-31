@@ -82,11 +82,6 @@ def create_slider(subs, channel):
     # Начальное значение также должно быть в секундах
     #initial_value = [min_value, max_value]
     
-    def format_label(unix_timestamp):
-        """Функция для форматирования меток слайдера."""
-        dt = datetime.fromtimestamp(unix_timestamp)
-        return dt.strftime('%Y-%m-%d')
-    
     # Отображаем слайдер
     return st.slider(
                         'Выберите диапазон дат:',
@@ -94,8 +89,6 @@ def create_slider(subs, channel):
                         max_value=max_value,
                         value=initial_value,
                         step=step,
-                        #format='Date: %Y-%m-%d'
-                        format  = "%Y-%m-%d" 
                     )   
 
         # Функция для генерации меток
