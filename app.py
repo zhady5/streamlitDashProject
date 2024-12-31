@@ -96,7 +96,7 @@ def main():
     
     fig_posts = create_fig_posts_inds(posts, selected_channel)
     fig_subs = create_fig_subs_inds(subs, selected_channel)
-    fig_subs_pos_neg = create_subs_pos_neg(subs, selected_channel, slider)
+    
     # Инициализация состояния кнопок
     if 'button_state' not in st.session_state:
         st.session_state.button_state = "all (6м)"
@@ -106,6 +106,7 @@ def main():
     with col1:
         st.plotly_chart(fig_posts, use_container_width=True)
         slider = create_slider(subs, selected_channel)
+        fig_subs_pos_neg = create_subs_pos_neg(subs, selected_channel, slider)
         st.plotly_chart(fig_subs_pos_neg, use_container_width=True)
         #st.write(slider)
     with col2:
