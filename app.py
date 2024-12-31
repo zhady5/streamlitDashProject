@@ -120,7 +120,7 @@ def main():
         with col1:
             col1, col2, col3, col4 = st.columns(4)
             with col1:
-                if st.button("3д"):
+                if st.button("3д", style='font-size: 10px;'):
                     filtered_df = posts[(posts.channel_name == selected_channel) &
                                         (pd.to_datetime(posts.date) >= date_ago('days', 2))]
             with col2:
