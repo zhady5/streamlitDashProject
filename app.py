@@ -64,12 +64,12 @@ st.markdown("""
         font-family: 'Roboto', sans-serif;
     }
     .stButton > button:hover {
-        background-color: #e0c9a6;
-        border-color: #d1b894;
+        background-color: #ffb347;
+        border-color: #f5dfbf;
     }
     .stButton > button:active {
         background-color: #ffb347;
-        border-color: #c2a782;
+        border-color: #f5dfbf;
     }
 </style>
 """, unsafe_allow_html=True)
