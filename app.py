@@ -67,12 +67,12 @@ st.markdown("""
     .stButton > button:hover {
         background-color: #f5dfbf;
         border-color: #f5dfbf;
-        color: #ffb347;
+        color: #333;
     }
     .stButton > button:active {
         background-color: #f5dfbf;
         border-color: #f5dfbf;
-        color: #ffb347;
+        color: #333;
     }
 </style>
 """, unsafe_allow_html=True)
