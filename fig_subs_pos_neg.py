@@ -62,8 +62,8 @@ def create_slider(subs, channel):
 
     subs = subs[subs['channel_name'] == channel]    
      # Получаем минимальную и максимальную дату
-    date_min = pd.to_datetime(subs['datetime']).min()
-    date_max = pd.to_datetime(subs['datetime']).max()
+    date_min = pd.to_datetime(subs['datetime']).min().strftime('%b %d, %H:%M')
+    date_max = pd.to_datetime(subs['datetime']).max().strftime('%b %d, %H:%M')
     
     # Создаем интервал между минимальной и максимальной датой
     time_delta = (date_max - date_min).total_seconds()
