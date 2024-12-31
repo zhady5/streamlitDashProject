@@ -139,7 +139,9 @@ def main():
         # Кнопки для выбора периода
         col1, col2 = st.columns(2)
         with col1:
-            col1, col2, col3, col4 = st.columns(4)
+
+        with col2:
+            col1, col2, col3, col4 = st.columns(8)
             with col1:
                 if st.button("3д", key="3d", help="Показать данные за последние 3 дня"):
                     st.session_state.button_state = "3д"
@@ -152,6 +154,10 @@ def main():
             with col4:
                 if st.button("all (6м)", key="6m", help="Показать данные за последние 6 месяцев"):
                     st.session_state.button_state = "all (6м)"
+            with col5:
+            with col6:
+            with col7:
+            with col8:
             
             # Фильтрация данных в зависимости от выбранной кнопки
             if st.session_state.button_state == "3д":
@@ -169,8 +175,6 @@ def main():
             
             if not filtered_df.empty:    
                 st.plotly_chart(create_heatmap(filtered_df), use_container_width=True)
-        with col2:
-            st.write('col2')
 
     # Добавляем JavaScript для стилизации активной кнопки
     st.markdown(f"""
