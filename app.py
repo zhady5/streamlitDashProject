@@ -87,7 +87,7 @@ def main():
             border: 2px solid #e0c9a6;
             border-radius: 5px;
             padding: 0.3rem 1rem;
-            font-size: 14px;
+            font-size: 10px;
             font-weight: 600;
             transition: all 0.3s ease;
         }
