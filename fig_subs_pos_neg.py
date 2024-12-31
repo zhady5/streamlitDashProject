@@ -90,7 +90,7 @@ def create_slider(subs, channel):
                         max_value=max_value,
                         value=initial_value,
                         step=step,
-                        format='Date: %Y-%m-%d'
+                        #format='Date: %Y-%m-%d'
                     )   
 
         # Функция для генерации меток
