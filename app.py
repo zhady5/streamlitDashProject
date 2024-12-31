@@ -47,7 +47,7 @@ st.markdown("""
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     .button-container {
-        display: flex;
+        display: inline;
         justify-content: flex-start;
         gap: 1px;
         margin-bottom: 10px;
