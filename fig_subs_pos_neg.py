@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 from datetime import datetime, timedelta
 
 
-def create_subs_pos_neg(subs, channel): #, slider_range
+def create_subs_pos_neg(subs, channel, slider_range): #, slider_range
     if channel is None or slider_range is None:
         st.write({})  # Вывод пустой фигуры
         return
@@ -57,41 +57,42 @@ def create_subs_pos_neg(subs, channel): #, slider_range
     return fig
 
 
-
-def update_slider_marks(subs, channel):
+def create_slider(subs, channel):
     if channel is None:
-        return {}
+        st.write({})  # Вывод пустой фигуры
+        return
 
-    subdf_channel = subs[subs["channel_name"] == channel]
-    dates = sorted(subdf_channel["date"])
+    subs = subs[subs['channel_name'] == channel]    
+     # Получаем минимальную и максимальную дату
+    date_min = pd.to_datetime(subs['datetime']).min()
+    date_max = pd.to_datetime(subs['datetime']).max()
+    
+    # Создаем интервал между минимальной и максимальной датой
+    time_delta = (date_max - date_min).total_seconds()
+    
+    # Разделим временной промежуток на шаги для слайдера
+    step = 86400 # секунд в одни сутки
+    
+    # Определяем начальные значения слайдера
+    min_value = int(0)
+    max_value = int(time_delta)
+    initial_value = [min_value, max_value]
+    
+    # Конвертируем минимальную и максимальную дату в секунды от начала эпохи (1970-01-01)
+    #min_value = int(date_min.timestamp())
+    #max_value = int(date_max.timestamp())
+    # Начальное значение также должно быть в секундах
+    #initial_value = [min_value, max_value]
+    
+    # Отображаем слайдер
+    return st.slider(
+                        'Выберите диапазон дат:',
+                        min_value=min_value,
+                        max_value=max_value,
+                        value=initial_value,
+                        step=step,
+                    )   
 
-    # Преобразуем строки в даты
-    dates = [
-        datetime.strptime(str(date), "%Y-%m-%d") for date in dates
-    ]
 
-    date_min = min(dates)
-
-    if len(dates) > 0:
-        marks = {
-            int((date - date_min).total_seconds()): {
-                "label": date.strftime("%b %d"),
-                "style": {
-                    "fontSize": "12px",
-                    "color": "black",
-                    "backgroundColor": "#f5dfbf",
-                    "borderRadius": "5px",
-                    "padding": "2px",
-                    "display": "block",
-                    "width": "auto",
-                    "transform": "translateX(-50%)",
-                },
-            }
-            for date in dates[:: max(1, len(dates) // 6)]
-        }
-    else:
-        marks = {}
-
-    return marks
 
     
