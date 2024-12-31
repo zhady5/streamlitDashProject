@@ -82,7 +82,7 @@ def create_slider(subs, channel):
                         min_value=date_min,
                         max_value=date_max,
                         value=initial_value,
-                        step=int(step)
+                        step=step
                     )   
 
         # Функция для генерации меток
