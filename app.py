@@ -14,6 +14,7 @@ from fig_heatmap import create_heatmap
 channels, posts, reactions, subscribers, views = load_data()
 processed_data = process_data(channels, posts, reactions, subscribers, views)
 
+st.set_page_config(layout="wide")
 # Стили заголовков и подзаголовков
 st.markdown("""
 <style>
@@ -72,7 +73,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def main():
-    st.set_page_config(layout="wide")
+    
 
     # Заголовок
     st.markdown('<div class="title"><h1>Simulative</h1></div>', unsafe_allow_html=True)
