@@ -47,7 +47,7 @@ st.markdown("""
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     .button-container {
-        display: inline;
+        display: flex;
         justify-content: flex-start;
         gap: 0px;
         margin-bottom: 0px;
@@ -60,6 +60,7 @@ st.markdown("""
         padding: 0px 0px;
         font-size: 8px;
         font-weight: 200;
+        white-space: nowrap; 
         font-family: 'Roboto', sans-serif;
     }
     .stButton > button:hover {
