@@ -74,11 +74,20 @@ def main():
             background-color: #f5dfbf;
             color: #333;
             border: 1px solid #e0c9a6;
-            border-radius: 3px;
+            border-radius: 0;
             padding: 0.1rem 0.33rem;
             font-size: 5px;
             font-weight: 600;
             transition: all 0.3s ease;
+            margin-right: -1px; /* Отрицательный отступ справа для наложения границ */
+        }
+        .stButton > button:first-child {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+        .stButton > button:last-child {
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
         }
         .stButton > button:hover {
             background-color: #e0c9a6;
@@ -87,6 +96,7 @@ def main():
         .stButton > button:active, .stButton > button.active {
             background-color: #d1b894;
             border-color: #c2a782;
+            z-index: 1; /* Поднимаем активную кнопку над остальными */
         }
 
         /* Медиа-запрос для мобильных устройств */
@@ -135,12 +145,10 @@ def main():
             st.plotly_chart(fig_subs, use_container_width=True)
 
     with st.container():
-        # Размещение графиков на одной строке
         # Кнопки для выбора периода
-        col1, col2 = st.columns(2)
-        with col1:
-            st.write('col1')
-        with col2:
+        col_buttons = st.columns([1, 3])  # Создаем две колонки: одну для кнопок, другую для графиков
+        with col_buttons[0]:
+            st.write("Период:")
             col1, col2, col3, col4 = st.columns(4)
             with col1:
                 if st.button("3д", key="3d", help="Показать данные за последние 3 дня"):
@@ -154,23 +162,25 @@ def main():
             with col4:
                 if st.button("all (6м)", key="6m", help="Показать данные за последние 6 месяцев"):
                     st.session_state.button_state = "all (6м)"
-            
-            # Фильтрация данных в зависимости от выбранной кнопки
-            if st.session_state.button_state == "3д":
-                filtered_df = posts[(posts.channel_name == selected_channel) &
-                                    (pd.to_datetime(posts.date) >= date_ago('days', 2))]
-            elif st.session_state.button_state == "1н":
-                filtered_df = posts[(posts.channel_name == selected_channel) &
-                                    (pd.to_datetime(posts.date) >= date_ago('weeks', 1))]
-            elif st.session_state.button_state == "1м":
-                filtered_df = posts[(posts.channel_name == selected_channel) &
-                                    (pd.to_datetime(posts.date) >= date_ago('months', 1))]
-            else:  # "all (6м)"
-                filtered_df = posts[(posts.channel_name == selected_channel) &
-                                    (pd.to_datetime(posts.date) >= date_ago('months', 6))]
-            
-            if not filtered_df.empty:    
-                st.plotly_chart(create_heatmap(filtered_df), use_container_width=True)
+
+        # Фильтрация данных в зависимости от выбранной кнопки
+        if st.session_state.button_state == "3д":
+            filtered_df = posts[(posts.channel_name == selected_channel) &
+                                (pd.to_datetime(posts.date) >= date_ago('days', 2))]
+        elif st.session_state.button_state == "1н":
+            filtered_df = posts[(posts.channel_name == selected_channel) &
+                                (pd.to_datetime(posts.date) >= date_ago('weeks', 1))]
+        elif st.session_state.button_state == "1м":
+            filtered_df = posts[(posts.channel_name == selected_channel) &
+                                (pd.to_datetime(posts.date) >= date_ago('months', 1))]
+        else:  # "all (6м)"
+            filtered_df = posts[(posts.channel_name == selected_channel) &
+                                (pd.to_datetime(posts.date) >= date_ago('months', 6))]
+
+        # Отображение графиков
+        with col_buttons[1]:
+            st.plotly_chart(create_heatmap(filtered_df), use_container_width=True)
+
 
     # Добавляем JavaScript для стилизации активной кнопки
     st.markdown(f"""
