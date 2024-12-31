@@ -48,7 +48,7 @@ st.markdown("""
     }
     .button-container {
         display: inline;
-        #justify-content: flex-start;
+        justify-content: flex-start;
         gap: 0px;
         margin-bottom: 5px;
     }
@@ -59,14 +59,14 @@ st.markdown("""
         border-radius: 10px;
         padding: 0px 0px;
         font-size: 4px;
-        #font-weight: 400;
+        font-weight: 200;
     }
     .stButton > button:hover {
         background-color: #e0c9a6;
         border-color: #d1b894;
     }
     .stButton > button:active {
-        background-color: #d1b894;
+        background-color: #ffb347;
         border-color: #c2a782;
     }
 </style>
