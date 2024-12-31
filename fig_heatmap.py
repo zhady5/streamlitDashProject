@@ -73,11 +73,11 @@ def create_heatmap(filtered_df):
     fig.update_xaxes(side="top", tickfont=dict(family='Arial', size=12), title_font=dict(family='Arial', size=14))
     
     fig.update_yaxes(
-        autorange="reversed",
-        dtick=max(len(y_labels) // 10, 1),
-        ticktext=y_labels,
+        #autorange="reversed",
+        #dtick=max(len(y_labels) // 10, 1),
+        #ticktext=y_labels,
         #tickvals=[datetime.datetime.strptime(date, "%Y-%m-%d").timestamp() for date in y_labels_subset],
-        tickformat="%b %d, %y",
+        #tickformat="%b %d, %y",
         tickfont={"family": "Arial", "size": 8},
         title_font={"family": "Arial", "size": 14}
     )
