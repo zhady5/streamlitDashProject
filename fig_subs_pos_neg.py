@@ -57,7 +57,7 @@ def create_subs_pos_neg(subs, channel, slider_range):
     return fig
 
 def create_slider(subs, channel):
-    if channel is None or slider_range is None:
+    if channel is None:
         st.write({})  # Вывод пустой фигуры
         return
 
