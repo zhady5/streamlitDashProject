@@ -80,14 +80,14 @@ def main():
             }
         }
 
-        /* Стили для кнопок */
+       /* Стили для кнопок */
         .stButton > button {
             background-color: #f5dfbf;
             color: #333;
-            border: 2px solid #e0c9a6;
-            border-radius: 5px;
-            padding: 0.3rem 1rem;
-            font-size: 10px;
+            border: 1px solid #e0c9a6;
+            border-radius: 3px;
+            padding: 0.1rem 0.33rem;
+            font-size: 5px;
             font-weight: 600;
             transition: all 0.3s ease;
         }
@@ -99,7 +99,6 @@ def main():
             background-color: #d1b894;
             border-color: #c2a782;
         }
-
   
       </style>
       """, unsafe_allow_html=True)
