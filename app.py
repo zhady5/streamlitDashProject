@@ -82,6 +82,7 @@ st.markdown("""
 
 
 
+
 def main():
     # Заголовок
     st.markdown('<div class="title"><h1>Simulative</h1></div>', unsafe_allow_html=True)
@@ -97,9 +98,16 @@ def main():
     subs = processed_data['subs']
     gr_pvr = processed_data['gr_pvr']
     post_view = processed_data['post_view']
+
+    mean_subs_pos, mean_subs_neg, max_subs_pos, max_subs_neg = calculate_mean_max_subs(subs, selected_channel)
+    mean_posts_day, mean_posts_week, mean_posts_month = calculate_mean_posts(posts, selected_channel)
+    mean_views = calculate_mean_views(post_view, selected_channel)
+    mean_reacts, mean_idx, react1, perc1, react2, perc2, react3, perc3 = calculate_mean_reacts(gr_pvr, selected_channel)
     
     fig_posts = create_fig_posts_inds(posts, selected_channel)
     fig_subs = create_fig_subs_inds(subs, selected_channel)
+
+    
     
     # Инициализация состояния кнопок
     if 'button_state' not in st.session_state:
@@ -135,34 +143,34 @@ def main():
 
     with col1:
         st.write("📈 Средний ежедневный прирост")
-        st.metric(label="", value="mean_subs_pos", delta=None)
+        st.metric(label="", value= mean_subs_pos, delta=None)
         st.write("📉 Средний ежедневный отток")
-        st.metric(label="", value="mean_subs_neg", delta=None)
+        st.metric(label="", value= mean_subs_neg, delta=None)
         st.write("🚀 Максимальный прирост")
-        st.metric(label="", value="max_subs_pos", delta=None)
+        st.metric(label="", value= max_subs_pos, delta=None)
         st.write("🆘 Максимальный отток")
-        st.metric(label="", value="max_subs_neg", delta=None)
+        st.metric(label="", value= max_subs_neg, delta=None)
 
     with col2:
         st.write("📋 В среднем постов в день")
-        st.metric(label="", value="mean_posts_day", delta=None)
+        st.metric(label="", value= mean_posts_day, delta=None)
         st.write("📜 В среднем постов в неделю")
-        st.metric(label="", value="mean_posts_week", delta=None)
+        st.metric(label="", value= mean_posts_week, delta=None)
         st.write("🗂️ В среднем постов в месяц")
-        st.metric(label="", value="mean_posts_month", delta=None)
+        st.metric(label="", value= mean_posts_month, delta=None)
 
     with col3:
         st.write("👀 В среднем просмотров")
-        st.metric(label="", value="mean_views", delta=None)
+        st.metric(label="", value= mean_views, delta=None)
         st.write("🐾 В среднем реакций")
-        st.metric(label="", value="mean_reacts", delta=None)
+        st.metric(label="", value= mean_reacts, delta=None)
         st.write("💎 В среднем уровень активности")
-        st.metric(label="", value="mean_idx", delta=None)
+        st.metric(label="", value= mean_idx, delta=None)
 
     with col4:
-        st.write("🥇 Доля реакции react1: perc1")
-        st.write("🥈 Доля реакции react2: perc2")
-        st.write("🥉 Доля реакции react3: perc3")
+        st.write("🥇 Доля реакции" + react1 + ": ", perc1)
+        st.write("🥈 Доля реакции react2:" perc2)
+        st.write("🥉 Доля реакции react3:" perc3)
         
     # Размещение графиков на одной строке
     col1, col2 = st.columns(2)
