@@ -150,30 +150,20 @@ def main():
     col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
 
     with col1:
-        st.write("📈 Средний ежедневный прирост")
-        st.metric(label="", value= mean_subs_pos, delta=None)
-        st.write("📉 Средний ежедневный отток")
-        st.metric(label="", value= mean_subs_neg, delta=None)
-        st.write("🚀 Максимальный прирост")
-        st.metric(label="", value= max_subs_pos, delta=None)
-        st.write("🆘 Максимальный отток")
-        st.metric(label="", value= max_subs_neg, delta=None)
+        st.write(f'<span class="custom-text"> 📈 Средний ежедневный прирост: </span><span class="custom-number">{mean_subs_pos}</span>', unsafe_allow_html=True)
+        st.write(f'<span class="custom-text"> 📉 Средний ежедневный отток: </span><span class="custom-number">{mean_subs_neg}</span>', unsafe_allow_html=True)
+        st.write(f'<span class="custom-text"> 🚀 Максимальный прирост: </span><span class="custom-number">{max_subs_pos}</span>', unsafe_allow_html=True)
+        st.write(f'<span class="custom-text"> 🆘 Максимальный отток: </span><span class="custom-number">{max_subs_neg}</span>', unsafe_allow_html=True)
 
     with col2:
-        st.write("📋 В среднем постов в день")
-        st.metric(label="", value= mean_posts_day, delta=None)
-        st.write("📜 В среднем постов в неделю")
-        st.metric(label="", value= mean_posts_week, delta=None)
-        st.write("🗂️ В среднем постов в месяц")
-        st.metric(label="", value= mean_posts_month, delta=None)
+        st.write(f'<span class="custom-text"> 📋 В среднем постов в день: </span><span class="custom-number">{mean_posts_day}</span>', unsafe_allow_html=True)
+        st.write(f'<span class="custom-text"> 📜 В среднем постов в неделю: </span><span class="custom-number">{mean_posts_week}</span>', unsafe_allow_html=True)
+        st.write(f'<span class="custom-text"> 🗂️ В среднем постов в месяц: </span><span class="custom-number">{mean_posts_month}</span>', unsafe_allow_html=True)
 
     with col3:
-        st.write("👀 В среднем просмотров")
-        st.metric(label="", value= mean_views, delta=None)
-        st.write("🐾 В среднем реакций")
-        st.metric(label="", value= mean_reacts, delta=None)
-        st.write("💎 В среднем уровень активности")
-        st.metric(label="", value= mean_idx, delta=None)
+        st.write(f'<span class="custom-text"> 👀 В среднем просмотров: </span><span class="custom-number">{mean_views}</span>', unsafe_allow_html=True)
+        st.write(f'<span class="custom-text"> 🐾 В среднем реакций: </span><span class="custom-number">{mean_reacts}</span>', unsafe_allow_html=True)
+        st.write(f'<span class="custom-text"> 💎 В среднем уровень активности: </span><span class="custom-number">{mean_idx}</span>', unsafe_allow_html=True)
 
     with col4:
         st.write(f'<span class="custom-text"> 🥇 Доля реакции {react1}: </span><span class="custom-number">{perc1}</span>', unsafe_allow_html=True)
