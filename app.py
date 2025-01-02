@@ -150,7 +150,7 @@ def main():
         
     # Размещение графиков на одной строке
     #col1, col2 = st.columns(2)
-    col1, gap_col, col2 = st.columns([0.45, 0.1, 0.45])
+    col1, gap_col, col2 = st.columns([0.47, 0.06, 0.47])
     with col1:
         #---------------------------------------------------------------------------------------------------------------------
         st.markdown('<div class="subheader"><h2>Аудитория на момент измерения</h2></div>', unsafe_allow_html=True)
