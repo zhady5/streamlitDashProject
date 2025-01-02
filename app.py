@@ -105,10 +105,6 @@ def main():
     col1, col2 = st.columns(2)
     with col1:    
         st.plotly_chart(fig_posts, use_container_width=True) 
-        
-             # Кастомный CSS для изменения цвета слайдера
-        st.markdown(""" <style> .stSlider > div > div > div[data-baseweb="slider"] > div { background-color: blue !important; } .stSlider > div > div > div[data-baseweb="slider"] > div > div { background-color: red !important; } </style> """, unsafe_allow_html=True)
-    
         slider = create_slider(subs, selected_channel)
         fig_subs_pos_neg = create_subs_pos_neg(subs, selected_channel, slider) #, slider
         st.plotly_chart(fig_subs_pos_neg, use_container_width=True)
