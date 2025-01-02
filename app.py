@@ -99,11 +99,6 @@ def main():
     post_view = processed_data['post_view']
     
     col1, col2 = st.columns([0.65, 0.35])
-    # Добавляем стили для увеличения расстояния между колонками
-    st.write(
-        """ <style> .column-0 { margin-right: 40px; /* Устанавливаем правый отступ для первой колонки */ } .column-1 { margin-left: 40px; /* Устанавливаем левый отступ для второй колонки */ } </style> """,
-        unsafe_allow_html=True,
-    )
     with col1:
          # Заголовок
         st.markdown('<div class="title"><h1>Simulative</h1></div>', unsafe_allow_html=True)
@@ -155,6 +150,11 @@ def main():
         
     # Размещение графиков на одной строке
     col1, col2 = st.columns(2)
+        # Добавляем стили для увеличения расстояния между колонками
+    st.write(
+        """ <style> .column-0 { margin-right: 60px; /* Устанавливаем правый отступ для первой колонки */ } .column-1 { margin-left: 60px; /* Устанавливаем левый отступ для второй колонки */ } </style> """,
+        unsafe_allow_html=True,
+    )
     with col1:
         #---------------------------------------------------------------------------------------------------------------------
         st.markdown('<div class="subheader"><h2>Аудитория на момент измерения</h2></div>', unsafe_allow_html=True)
