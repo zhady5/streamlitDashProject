@@ -105,6 +105,65 @@ def main():
     if 'button_state' not in st.session_state:
         st.session_state.button_state = "all (6м)"
 
+
+    # Стили для чисел
+    metric_styles = {
+        "color": "#3366CC",
+        "fontWeight": "bold",
+        "fontSize": "20px"
+    }
+    
+    st.markdown(
+        """
+        <style>
+            .row {
+                display: flex;
+                margin-bottom: 40px;
+            }
+            .column {
+                width: 22%;
+                height: 100%;
+                margin-right: 30px;
+            }
+            .last-column {
+                margin-left: 30px;
+            }
+        </style>
+        """, unsafe_allow_html=True)
+
+    col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
+
+    with col1:
+        st.write("📈 Средний ежедневный прирост")
+        st.metric(label="", value="mean_subs_pos", delta=None)
+        st.write("📉 Средний ежедневный отток")
+        st.metric(label="", value="mean_subs_neg", delta=None)
+        st.write("🚀 Максимальный прирост")
+        st.metric(label="", value="max_subs_pos", delta=None)
+        st.write("🆘 Максимальный отток")
+        st.metric(label="", value="max_subs_neg", delta=None)
+
+    with col2:
+        st.write("📋 В среднем постов в день")
+        st.metric(label="", value="mean_posts_day", delta=None)
+        st.write("📜 В среднем постов в неделю")
+        st.metric(label="", value="mean_posts_week", delta=None)
+        st.write("🗂️ В среднем постов в месяц")
+        st.metric(label="", value="mean_posts_month", delta=None)
+
+    with col3:
+        st.write("👀 В среднем просмотров")
+        st.metric(label="", value="mean_views", delta=None)
+        st.write("🐾 В среднем реакций")
+        st.metric(label="", value="mean_reacts", delta=None)
+        st.write("💎 В среднем уровень активности")
+        st.metric(label="", value="mean_idx", delta=None)
+
+    with col4:
+        st.write("🥇 Доля реакции react1: perc1")
+        st.write("🥈 Доля реакции react2: perc2")
+        st.write("🥉 Доля реакции react3: perc3")
+        
     # Размещение графиков на одной строке
     col1, col2 = st.columns(2)
     with col1:    
