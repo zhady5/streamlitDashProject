@@ -17,7 +17,7 @@ from fig_table_views import create_table
 channels, posts, reactions, subscribers, views = load_data()
 processed_data = process_data(channels, posts, reactions, subscribers, views)
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_icon="🅢",)
 # Стили заголовков и подзаголовков
 st.markdown("""
 <style>
