@@ -6,7 +6,18 @@ import string
 import pandas as pd
 from collections import Counter
 import nltk 
-nltk.download('popular')
+# Загрузка необходимых ресурсов NLTK
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('brown')
+
+from nltk.corpus import stopwords, brown
+from nltk.tokenize import word_tokenize
 
 def load_stopwords_from_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
