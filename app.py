@@ -168,9 +168,9 @@ def main():
         st.metric(label="", value= mean_idx, delta=None)
 
     with col4:
-        st.write("🥇 Доля реакции")
-        st.write("🥈 Доля реакции react2: perc2")
-        st.write("🥉 Доля реакции react3: perc3")
+        st.write(f"🥇 Доля реакции {react1}: {perc1}")
+        st.write(f"🥈 Доля реакции {react2}: {perc2}")
+        st.write(f"🥉 Доля реакции {react3}: {perc3}")
         
     # Размещение графиков на одной строке
     col1, col2 = st.columns(2)
