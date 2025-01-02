@@ -44,7 +44,7 @@ st.markdown("""
     }
 
     .custom-text { color: #666; 
-                   font-size: 16px; 
+                   font-size: 13px; 
                    } 
     .custom-number { color: brown; 
                      font-weight: bold; 
