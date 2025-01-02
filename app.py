@@ -201,7 +201,8 @@ def main():
             return ['background-color: lightgreen' if v else '' for v in is_large]
         
         styled_df = df.style.apply(highlight_percentages, subset=['Percent New Views'])
-        st.dataframe(styled_df[columns_to_show])
+        #st.dataframe(styled_df[columns_to_show])
+        st.dataframe(styled_df.to_html(), unsafe_allow_html=True)
 
 
 
