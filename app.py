@@ -4,7 +4,7 @@ from datetime import date
 import dash
 
 from data_processing import load_data, process_data
-from functions import date_ago, convert_date, get_gradient_color, get_current_previous_sums, create_table, hex_to_rgb, \
+from functions import date_ago, convert_date, get_gradient_color, get_current_previous_sums,  hex_to_rgb, \
     interpolate_color, gradient_color_func, calculate_mean_max_subs, calculate_mean_posts, calculate_mean_views, \
     calculate_mean_reacts, load_stopwords_from_file
 from fig_posts_inds import create_fig_posts_inds
@@ -12,6 +12,7 @@ from fig_subs_inds import create_fig_subs_inds
 from fig_heatmap import create_heatmap
 from fig_subs_pos_neg import create_subs_pos_neg, create_slider
 from fig_bubble import create_bubble_fig
+from fig_table_views import create_table
 
 channels, posts, reactions, subscribers, views = load_data()
 processed_data = process_data(channels, posts, reactions, subscribers, views)
@@ -192,6 +193,7 @@ def main():
         st.slider("Количество дней для отображения", min_value=1, max_value=24, value=5, key="slider_days")
         days_to_show = st.session_state.slider_days
         columns_to_show = ["ID поста и дата", "Текущие просмотры"] + [str(i)+"д" for i in range(1, days_to_show+1)]
+        df = create_table(post_view, days_to_show, selected_channel)
         st.table(df[columns_to_show])
 
 
