@@ -11,6 +11,7 @@ from fig_posts_inds import create_fig_posts_inds
 from fig_subs_inds import create_fig_subs_inds
 from fig_heatmap import create_heatmap
 from fig_subs_pos_neg import create_subs_pos_neg, create_slider
+from fig_bubble import create_bubble_fig
 
 channels, posts, reactions, subscribers, views = load_data()
 processed_data = process_data(channels, posts, reactions, subscribers, views)
@@ -93,6 +94,7 @@ def main():
 
     posts = processed_data['posts']
     subs = processed_data['subs']
+    gr_pvr = processed_data['gr_pvr']
     
     fig_posts = create_fig_posts_inds(posts, selected_channel)
     fig_subs = create_fig_subs_inds(subs, selected_channel)
@@ -110,6 +112,54 @@ def main():
         slider = create_slider(subs, selected_channel)
         fig_subs_pos_neg = create_subs_pos_neg(subs, selected_channel, slider) #, slider
         st.plotly_chart(fig_subs_pos_neg, use_container_width=True)
+
+
+
+        # Кнопки для выбора периода
+        st.markdown('<div class="button-container">', unsafe_allow_html=True)
+        col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11, col12   = st.columns(12)
+        with col1:
+            st.empty()          
+        with col2:
+            if st.button("3д", key="3db"):
+                st.session_state.button_state = "3д"
+        with col3:
+            if st.button("1н", key="1wb"):
+                st.session_state.button_state = "1н"
+        with col4:
+            if st.button("1м", key="1mb"):
+                st.session_state.button_state = "1м"
+        with col5:
+            if st.button("all (6м)", key="6mb"):
+                st.session_state.button_state = "all (6м)"
+        with col6:
+            st.empty()                 
+        with col7:
+            st.empty()
+        with col8:
+            st.empty()   
+        with col9:
+            st.empty()
+        with col10:
+            st.empty()   
+        with col11:
+            st.empty()
+        with col12:
+            st.empty()              
+        st.markdown('</div>', unsafe_allow_html=True)
+
+        # Фильтрация данных в зависимости от выбранной кнопки
+        if st.session_state.button_state == "3д":
+            filtered_bubble = gr_pvr[(gr_pvr.channel_name == channel)&(pd.to_datetime(gr_pvr.post_datetime.str[:10])>=date_ago('days', 2))]  
+        elif st.session_state.button_state == "1н":
+            filtered_bubble = gr_pvr[(gr_pvr.channel_name == channel)&(pd.to_datetime(gr_pvr.post_datetime.str[:10])>=date_ago('weeks', 1))]
+        elif st.session_state.button_state == "1м":
+            filtered_bubble = gr_pvr[(gr_pvr.channel_name == channel)&(pd.to_datetime(gr_pvr.post_datetime.str[:10])>=date_ago('months', 1))]
+        else:  # "all (6м)"
+            filtered_bubble = gr_pvr[(gr_pvr.channel_name == channel)&(pd.to_datetime(gr_pvr.post_datetime.str[:10])>=date_ago('months', 6))]
+        
+        fig_bubble = create_bubble_fig(filtered_bubble)
+        st.plotly_chart(fig_bubble, use_container_width=True)
     with col2:
         st.plotly_chart(fig_subs, use_container_width=True)
         
