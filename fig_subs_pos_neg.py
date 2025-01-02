@@ -83,35 +83,44 @@ def create_slider(subs, channel):
     st.markdown("""
     <style>
     .stSlider [data-baseweb="slider"] {
-        background-color: #4CAF50 !important;
+        background: linear-gradient(to right, #4CAF50, #45a049);
     }
     .stSlider [data-baseweb="thumb"] {
-        background-color: #45a049 !important;
+        background-color: white !important;
+        border: 2px solid #45a049 !important;
     }
     .stSlider [data-baseweb="tickBar"] {
-        display: none !important;
+        display: none;
     }
     .stSlider [data-testid="stTickBarMin"], .stSlider [data-testid="stTickBarMax"] {
-        display: none !important;
-    }
-    .stSlider [data-testid="stThumbValue"] {
-        color: #333333 !important;
-        font-family: Arial, sans-serif !important;
-        font-weight: bold !important;
+        display: none;
     }
     </style>
     """, unsafe_allow_html=True)
     
+    # Создаем слайдер
     selected_range = st.slider(
         'Выберите диапазон дат:',
         min_value=date_min,
         max_value=date_max,
         value=(date_min, date_max),
-        format= "MMM DD, YYYY"
+        step=timedelta(days=1),
+        format="MMM DD, YYYY"
     )
     
+    # Отображаем выбранный диапазон дат
+    st.markdown(f"""
+    <p style='
+        color: #333333;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        text-align: center;
+    '>
+    Выбранный период: {selected_range[0].strftime('%b %d, %Y')} - {selected_range[1].strftime('%b %d, %Y')}
+    </p>
+    """, unsafe_allow_html=True)
+    
     return selected_range
-
 
 
 
