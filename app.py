@@ -195,7 +195,7 @@ def main():
         days_to_show = st.session_state.slider_days
         columns_to_show = ["ID поста", "Дата публикации", "Текущие просмотры"] + [str(i)+" д" for i in range(1, days_to_show+1)]
         
-        #df = create_table(post_view, days_to_show, selected_channel)
+        df = create_table(post_view, days_to_show, selected_channel)
         #def highlight_percentages(s):
         #    is_large = s > 80
         #    return ['background-color: lightgreen' if v else '' for v in is_large]
@@ -203,7 +203,7 @@ def main():
         #styled_df = df.style.apply(highlight_percentages, subset= [str(i)+" д" for i in range(1, days_to_show+1)])
         #st.dataframe(styled_df.to_html(), unsafe_allow_html=True)
 
-        st.table(styled_df[columns_to_show])
+        st.table(df[columns_to_show])
 
 
 
