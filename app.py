@@ -125,31 +125,6 @@ def main():
     if 'button_state' not in st.session_state:
         st.session_state.button_state = "all (6м)"
 
-    # Стили для чисел
-    metric_styles = {
-        "color": "#3366CC",
-        "fontWeight": "bold",
-        "fontSize": "20px"
-    }
-    
-    st.markdown(
-        """
-        <style>
-            .row {
-                display: flex;
-                margin-bottom: 40px;
-            }
-            .column {
-                width: 22%;
-                height: 100%;
-                margin-right: 30px;
-            }
-            .last-column {
-                margin-left: 30px;
-            }
-        </style>
-        """, unsafe_allow_html=True)
-
     col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
 
     with col1:
