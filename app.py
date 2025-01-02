@@ -149,7 +149,8 @@ def main():
         st.write(f'<span class="custom-text"> 🥉 Доля реакции {react3}: </span><span class="custom-number">{perc3}%</span>', unsafe_allow_html=True)
         
     # Размещение графиков на одной строке
-    col1, col2 = st.columns(2)
+    #col1, col2 = st.columns(2)
+    col1, gap_col, col2 = st.columns([0.45, 0.1, 0.45])
     with col1:
         #---------------------------------------------------------------------------------------------------------------------
         st.markdown('<div class="subheader"><h2>Аудитория на момент измерения</h2></div>', unsafe_allow_html=True)
