@@ -96,6 +96,7 @@ def main():
     posts = processed_data['posts']
     subs = processed_data['subs']
     gr_pvr = processed_data['gr_pvr']
+    post_view = processed_data['post_view']
     
     fig_posts = create_fig_posts_inds(posts, selected_channel)
     fig_subs = create_fig_subs_inds(subs, selected_channel)
