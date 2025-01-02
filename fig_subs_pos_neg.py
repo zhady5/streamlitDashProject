@@ -19,8 +19,8 @@ def create_subs_pos_neg(subs, channel, date_range):
     subdf_channel.loc[:, 'datetime'] = pd.to_datetime(subdf_channel['datetime'])
     start_time, end_time = date_range
 
-    filtered_df = subdf_channel[(subdf_channel['datetime'].dt.date >= start_time) & 
-                                (subdf_channel['datetime'].dt.date <= end_time)]
+    filtered_df = subdf_channel[(pd.to_datetime(subdf_channel['datetime']).dt.date >= start_time) & 
+                                (pd.to_datetime(subdf_channel['datetime']).dt.date <= end_time)]
 
     # Преобразуем строку в datetime
     #subdf_channel.loc[:, 'datetime'] = pd.to_datetime(subdf_channel['datetime'])
