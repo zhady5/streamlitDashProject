@@ -13,6 +13,7 @@ from fig_heatmap import create_heatmap
 from fig_subs_pos_neg import create_subs_pos_neg, create_slider
 from fig_bubble import create_bubble_fig
 from fig_table_views import create_table
+from fig_image import make_image, prepare_data
 
 channels, posts, reactions, subscribers, views = load_data()
 processed_data = process_data(channels, posts, reactions, subscribers, views)
@@ -115,7 +116,10 @@ def main():
     fig_posts = create_fig_posts_inds(posts, selected_channel)
     fig_subs = create_fig_subs_inds(subs, selected_channel)
 
-    
+    if selected_channel:
+        df_words = prepare_data(posts, selected_channel)
+        image = make_image(df_words)
+        st.image(image, use_column_width=True)
     
     # Инициализация состояния кнопок
     if 'button_state' not in st.session_state:
