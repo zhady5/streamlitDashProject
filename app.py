@@ -98,7 +98,7 @@ def main():
     gr_pvr = processed_data['gr_pvr']
     post_view = processed_data['post_view']
     
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns([0.8, 0.2])
     with col1:
          # Заголовок
         st.markdown('<div class="title"><h1>Simulative</h1></div>', unsafe_allow_html=True)
