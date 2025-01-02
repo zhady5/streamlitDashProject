@@ -83,14 +83,24 @@ def create_slider(subs, channel):
     def format_func(date):
         return date.strftime("%b %d, %Y")
     # Отображаем слайдер
-    
-    selected_range = st.slider(
+
+
+    # Отображаем слайдер
+    selected_range = st.select_slider(
         'Выберите диапазон дат:',
-        min_value=date_min,
-        max_value=date_max,
+        options=pd.date_range(date_min, date_max, freq='D'),
         value=(date_min, date_max),
-        format= format_func #"YYYY-MM-DD"
+        format_func=format_func
     )
+
+    
+    #selected_range = st.slider(
+    #    'Выберите диапазон дат:',
+    #    min_value=date_min,
+    #    max_value=date_max,
+    #    value=(date_min, date_max),
+    #    format= format_func #"YYYY-MM-DD"
+    #)
     
     return selected_range
 
