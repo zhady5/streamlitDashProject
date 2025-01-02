@@ -82,7 +82,7 @@ def create_slider(subs, channel):
     
     # Создаем слайдер
     selected_range = st.slider(
-        #'Выберите диапазон дат:',
+        '',
         min_value=date_min,
         max_value=date_max,
         value=(date_min, date_max),
