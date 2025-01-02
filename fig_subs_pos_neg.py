@@ -79,6 +79,28 @@ def create_slider(subs, channel):
     date_min = pd.to_datetime(subs['datetime']).min().date()
     date_max = pd.to_datetime(subs['datetime']).max().date()
 
+    # Создаем кастомный CSS для слайдера
+    st.markdown("""
+    <style>
+    .stSlider [data-baseweb="slider"] {
+        background-color: #4CAF50 !important;
+    }
+    .stSlider [data-baseweb="thumb"] {
+        background-color: #45a049 !important;
+    }
+    .stSlider [data-baseweb="tickBar"] {
+        display: none !important;
+    }
+    .stSlider [data-testid="stTickBarMin"], .stSlider [data-testid="stTickBarMax"] {
+        display: none !important;
+    }
+    .stSlider [data-testid="stThumbValue"] {
+        color: #333333 !important;
+        font-family: Arial, sans-serif !important;
+        font-weight: bold !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
     
     selected_range = st.slider(
         'Выберите диапазон дат:',
