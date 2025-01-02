@@ -272,7 +272,7 @@ def main():
         st.markdown('<div class="subheader"><h2>Просмотр текста поста и даты по номеру ID:</h2></div>', unsafe_allow_html=True)
         #st.subheader("Просмотр текста поста и даты по номеру ID:")
         # Здесь можно добавить фильтрацию и отображение конкретной строки из DataFrame
-        post_id = st.text_input("Введите номер ID поста:", "")
+        post_id = st.text_input("", "", placeholder = "Введите номер ID поста")
         if post_id:
             try:
                 #row = posts.query(f"'id' == '{post_id}'").iloc[0]
