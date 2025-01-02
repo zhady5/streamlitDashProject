@@ -79,9 +79,9 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-def main():
-    
 
+
+def main():
     # Заголовок
     st.markdown('<div class="title"><h1>Simulative</h1></div>', unsafe_allow_html=True)
     
@@ -113,39 +113,23 @@ def main():
         fig_subs_pos_neg = create_subs_pos_neg(subs, selected_channel, slider) #, slider
         st.plotly_chart(fig_subs_pos_neg, use_container_width=True)
 
-
-
         # Кнопки для выбора периода
         st.markdown('<div class="button-container">', unsafe_allow_html=True)
-        col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11, col12   = st.columns(12)
-        with col1:
+        button_col1, button_col2, button_col3, button_col4, button_col5 = st.columns([0.25, 0.15, 0.15, 0.15, 0.30])
+        with button_col1:
             st.empty()          
-        with col2:
+        with button_col2:
             if st.button("3д", key="3db"):
                 st.session_state.button_state = "3д"
-        with col3:
+        with button_col3:
             if st.button("1н", key="1wb"):
                 st.session_state.button_state = "1н"
-        with col4:
+        with button_col4:
             if st.button("1м", key="1mb"):
                 st.session_state.button_state = "1м"
-        with col5:
+        with button_col5:
             if st.button("all (6м)", key="6mb"):
                 st.session_state.button_state = "all (6м)"
-        with col6:
-            st.empty()                 
-        with col7:
-            st.empty()
-        with col8:
-            st.empty()   
-        with col9:
-            st.empty()
-        with col10:
-            st.empty()   
-        with col11:
-            st.empty()
-        with col12:
-            st.empty()              
         st.markdown('</div>', unsafe_allow_html=True)
 
         # Фильтрация данных в зависимости от выбранной кнопки
@@ -160,40 +144,28 @@ def main():
         
         fig_bubble = create_bubble_fig(filtered_bubble)
         st.plotly_chart(fig_bubble, use_container_width=True)
+        
     with col2:
+        
         st.plotly_chart(fig_subs, use_container_width=True)
         
         # Кнопки для выбора периода
         st.markdown('<div class="button-container">', unsafe_allow_html=True)
-        col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11, col12   = st.columns(12)
-        with col1:
+        button_col1, button_col2, button_col3, button_col4, button_col5 = st.columns([0.25, 0.15, 0.15, 0.15, 0.30])
+        with button_col1:
             st.empty()          
-        with col2:
+        with button_col2:
             if st.button("3д", key="3d"):
                 st.session_state.button_state = "3д"
-        with col3:
+        with button_col3:
             if st.button("1н", key="1w"):
                 st.session_state.button_state = "1н"
-        with col4:
+        with button_col4:
             if st.button("1м", key="1m"):
                 st.session_state.button_state = "1м"
-        with col5:
+        with button_col5:
             if st.button("all (6м)", key="6m"):
                 st.session_state.button_state = "all (6м)"
-        with col6:
-            st.empty()                 
-        with col7:
-            st.empty()
-        with col8:
-            st.empty()   
-        with col9:
-            st.empty()
-        with col10:
-            st.empty()   
-        with col11:
-            st.empty()
-        with col12:
-            st.empty()              
         st.markdown('</div>', unsafe_allow_html=True)
 
         # Фильтрация данных в зависимости от выбранной кнопки
@@ -213,5 +185,8 @@ def main():
         # Отображение тепловой карты
         st.plotly_chart(create_heatmap(filtered_df), use_container_width=True)
 
+
 if __name__ == "__main__":
     main()
+
+
