@@ -85,7 +85,7 @@ def create_slider(subs, channel):
         min_value=date_min,
         max_value=date_max,
         value=(date_min, date_max),
-        format= "YYYY-MMM-DD"
+        format= "MMM DD, YYYY"
     )
     
     return selected_range
