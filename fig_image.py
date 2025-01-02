@@ -5,15 +5,8 @@ from io import BytesIO
 import string
 import pandas as pd
 from collections import Counter
-import nltk
-# Убедимся, что пункт загружен
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt')
-    
-nltk.download('brown')
-from nltk.corpus import brown
+import nltk 
+nltk.download('popular')
 
 def load_stopwords_from_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
