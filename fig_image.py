@@ -7,6 +7,8 @@ import pandas as pd
 from collections import Counter
 import nltk
 nltk.download('punkt')  # Скачиваем токенизатор, если он ещё не установлен
+nltk.download('brown')
+from nltk.corpus import brown
 
 def load_stopwords_from_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
