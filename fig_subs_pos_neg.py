@@ -79,8 +79,7 @@ def create_slider(subs, channel):
     date_min = pd.to_datetime(subs['datetime']).min().date()
     date_max = pd.to_datetime(subs['datetime']).max().date()
 
-    # Кастомный CSS для скрытия подписей под слайдером
-    st.markdown(""" <style> .stSlider .st-cl::after { content: ""; } </style> """, unsafe_allow_html=True)
+    
     # Создаем слайдер
     selected_range = st.slider(
         'Выберите диапазон дат:',
