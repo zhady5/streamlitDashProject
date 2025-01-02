@@ -6,7 +6,12 @@ import string
 import pandas as pd
 from collections import Counter
 import nltk
-nltk.download('punkt')  # Скачиваем токенизатор, если он ещё не установлен
+# Убедимся, что пункт загружен
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+    
 nltk.download('brown')
 from nltk.corpus import brown
 
