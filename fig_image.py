@@ -7,10 +7,6 @@ import pandas as pd
 from collections import Counter
 import nltk 
 # Загрузка необходимых ресурсов NLTK
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt')
 
 nltk.download('stopwords')
 nltk.download('averaged_perceptron_tagger')
