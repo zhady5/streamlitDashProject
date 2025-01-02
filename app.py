@@ -44,11 +44,11 @@ st.markdown("""
     }
 
     .custom-text { color: #666; 
-                   font-size: 12px; 
+                   font-size: 16px; 
                    } 
     .custom-number { color: brown; 
                      font-weight: bold; 
-                     font-size: 24px; }
+                     font-size: 20px; }
     
     .stApp {
         max-width: 1200px;
