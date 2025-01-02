@@ -106,7 +106,7 @@ def main():
         st.markdown('<div class="subheader"><h2>Дашборд по анализу Telegram-каналов</h2></div>', unsafe_allow_html=True)
         # Выбор канала
         channels_list = processed_data['posts']['channel_name'].unique()
-        selected_channel = st.selectbox('Выберите канал:', channels_list)
+        selected_channel = st.selectbox('', channels_list) #'Выберите канал:', 
     with col2:
         if selected_channel:
             df_words = prepare_data(posts, selected_channel)
