@@ -214,7 +214,8 @@ def main():
                 #row = posts.query(f"'id' == '{post_id}'").iloc[0]
                 row = posts[posts.id.astype(str) == post_id].iloc[0, :]
                 st.write(posts.columns)
-                st.write(f"Текст поста: {row['id']}")
+                st.write(f"ID: {row['id']}")
+                st.write(f"Текст поста: {row['text']}")
                 #st.write(f"Дата поста: {row['date']}")
             except IndexError:
                 st.error("Номер ID не найден.")
