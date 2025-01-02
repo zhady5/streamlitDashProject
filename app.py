@@ -92,11 +92,6 @@ st.markdown("""
 
 
 def main():
-    # Заголовок
-    st.markdown('<div class="title"><h1>Simulative</h1></div>', unsafe_allow_html=True)
-    
-    # Подзаголовок
-    st.markdown('<div class="subheader"><h2>Дашборд по анализу Telegram-каналов</h2></div>', unsafe_allow_html=True)
     
     # Выбор канала
     channels_list = processed_data['posts']['channel_name'].unique()
@@ -115,14 +110,23 @@ def main():
     fig_posts = create_fig_posts_inds(posts, selected_channel)
     fig_subs = create_fig_subs_inds(subs, selected_channel)
 
-    if selected_channel:
-        df_words = prepare_data(posts, selected_channel)
-        image = make_image(df_words)
-        st.image(image, use_column_width=True)
-    
     # Инициализация состояния кнопок
     if 'button_state' not in st.session_state:
         st.session_state.button_state = "all (6м)"
+        
+    
+    col1, col2 = st.columns(2)
+    with col1:
+            # Заголовок
+        st.markdown('<div class="title"><h1>Simulative</h1></div>', unsafe_allow_html=True)
+        
+        # Подзаголовок
+        st.markdown('<div class="subheader"><h2>Дашборд по анализу Telegram-каналов</h2></div>', unsafe_allow_html=True)
+    with col2:
+        if selected_channel:
+            df_words = prepare_data(posts, selected_channel)
+            image = make_image(df_words)
+            st.image(image, use_column_width=True)
 
 
     # Стили для чисел
