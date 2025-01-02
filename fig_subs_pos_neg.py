@@ -78,14 +78,18 @@ def create_slider(subs, channel):
     # Получаем минимальную и максимальную дату
     date_min = pd.to_datetime(subs['datetime']).min().date()
     date_max = pd.to_datetime(subs['datetime']).max().date()
-    
+
+    # Функция для форматирования дат
+    def format_func(date):
+        return date.strftime("%b %d, %Y")
     # Отображаем слайдер
+    
     selected_range = st.slider(
         'Выберите диапазон дат:',
         min_value=date_min,
         max_value=date_max,
         value=(date_min, date_max),
-        format= "%b %d, %y" #"YYYY-MM-DD"
+        format= format_func #"YYYY-MM-DD"
     )
     
     return selected_range
