@@ -92,7 +92,12 @@ st.markdown("""
 
 
 def main():
-
+    
+    posts = processed_data['posts']
+    subs = processed_data['subs']
+    gr_pvr = processed_data['gr_pvr']
+    post_view = processed_data['post_view']
+    
     col1, col2 = st.columns(2)
     with col1:
          # Заголовок
@@ -107,11 +112,6 @@ def main():
             df_words = prepare_data(posts, selected_channel)
             image = make_image(df_words)
             st.image(image, use_column_width=True)
-
-    posts = processed_data['posts']
-    subs = processed_data['subs']
-    gr_pvr = processed_data['gr_pvr']
-    post_view = processed_data['post_view']
 
     mean_subs_pos, mean_subs_neg, max_subs_pos, max_subs_neg = calculate_mean_max_subs(subs, selected_channel)
     mean_posts_day, mean_posts_week, mean_posts_month = calculate_mean_posts(posts, selected_channel)
