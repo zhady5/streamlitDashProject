@@ -208,11 +208,11 @@ def main():
         #Поисковик
         st.subheader("Просмотр текста поста и даты по номеру ID:")
         # Здесь можно добавить фильтрацию и отображение конкретной строки из DataFrame
-        post_id = st.text_input("Введите номер ID поста:", )
+        post_id = st.text_input("Введите номер ID поста:", "")
         if post_id:
             try:
                 #row = posts.query(f"'id' == '{post_id}'").iloc[0]
-                row = posts[posts.id == post_id].iloc[0, :]
+                row = posts[posts.id.astype(str) == post_id].iloc[0, :]
                 st.write(f"Текст поста: {row['Text']}")
                 st.write(f"Дата поста: {row['date']}")
             except IndexError:
