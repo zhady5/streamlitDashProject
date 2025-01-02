@@ -150,8 +150,10 @@ def main():
         
     # Размещение графиков на одной строке
     col1, col2 = st.columns(2)
-    with col1:    
-        st.plotly_chart(fig_posts, use_container_width=True) 
+    with col1:
+        st.markdown('<div class="subheader"><h2>Аудитория на момент измерения</h2></div>', unsafe_allow_html=True)
+        st.markdown('<div class="custom-text">График показывает изменение общего количества подписчиков с течением времени. Он помогает отслеживать динамику роста аудитории и выявлять периоды активного притока или оттока подписчиков. Анализ графика позволяет корректировать стратегию продвижения и создавать контент, который привлечет и удержит больше подписчиков (Процентные значения индикаторов указывают на изменения по сравнению с предыдущими аналогичными периодами).</div>', unsafe_allow_html=True)
+        st.plotly_chart(fig_subs, use_container_width=True) 
         # Кастомный CSS для скрытия подписей под слайдером
         st.markdown(""" <style> .stSlider .st-cl::after { content: ""; } </style> """, unsafe_allow_html=True)
         slider = create_slider(subs, selected_channel)
@@ -191,8 +193,8 @@ def main():
         st.plotly_chart(fig_bubble, use_container_width=True)
         
     with col2:
-        
-        st.plotly_chart(fig_subs, use_container_width=True)
+        st.markdown('<div class="subheader"><h2>Суточные показатели публикаций</h2></div>', unsafe_allow_html=True)
+        st.plotly_chart(fig_posts, use_container_width=True)
         
         # Кнопки для выбора периода
         st.markdown('<div class="button-container">', unsafe_allow_html=True)
