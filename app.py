@@ -42,6 +42,14 @@ st.markdown("""
         margin-bottom: 0px;
         font-weight: bold;
     }
+
+    .custom-text { color: #666; 
+                   font-size: 12px; 
+                   } 
+    .custom-number { color: brown; 
+                     font-weight: bold; 
+                     font-size: 24px; }
+    
     .stApp {
         max-width: 1200px;
         margin: 0 auto;
@@ -168,7 +176,8 @@ def main():
         st.metric(label="", value= mean_idx, delta=None)
 
     with col4:
-        st.write(f"🥇 Доля реакции {react1}: {perc1}")
+        st.write(f'<span class="custom-text"> 🥇 Доля реакции {react1}: </span><span class="custom-number">{perc1}</span>', unsafe_allow_html=True)
+        #st.write(f"🥇 Доля реакции {react1}: {perc1}")
         st.write(f"🥈 Доля реакции {react2}: {perc2}")
         st.write(f"🥉 Доля реакции {react3}: {perc3}")
         
