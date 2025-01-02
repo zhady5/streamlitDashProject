@@ -253,9 +253,7 @@ def main():
         
         #---------------------------------------------------------------------------------------------------------------------
         # Добавление таблицы
-        def add_days(value):
-            return f"{value} д"
-        st.sidebar.slider("", min_value=1, max_value=24, value=5, key="slider_days", format_func = add_days)
+        st.sidebar.slider("", min_value=1, max_value=24, value=5, key="slider_days")
         days_to_show = st.session_state.slider_days
         columns_to_show = ["ID поста", "Дата публикации", "Текущие просмотры"] + [str(i)+" д" for i in range(1, days_to_show+1)]
         
