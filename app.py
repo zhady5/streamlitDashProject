@@ -92,27 +92,7 @@ st.markdown("""
 
 
 def main():
-    
 
-
-    posts = processed_data['posts']
-    subs = processed_data['subs']
-    gr_pvr = processed_data['gr_pvr']
-    post_view = processed_data['post_view']
-
-    mean_subs_pos, mean_subs_neg, max_subs_pos, max_subs_neg = calculate_mean_max_subs(subs, selected_channel)
-    mean_posts_day, mean_posts_week, mean_posts_month = calculate_mean_posts(posts, selected_channel)
-    mean_views = calculate_mean_views(post_view, selected_channel)
-    mean_reacts, mean_idx, react1, perc1, react2, perc2, react3, perc3 = calculate_mean_reacts(gr_pvr, selected_channel)
-    
-    fig_posts = create_fig_posts_inds(posts, selected_channel)
-    fig_subs = create_fig_subs_inds(subs, selected_channel)
-
-    # Инициализация состояния кнопок
-    if 'button_state' not in st.session_state:
-        st.session_state.button_state = "all (6м)"
-        
-    
     col1, col2 = st.columns(2)
     with col1:
          # Заголовок
@@ -128,6 +108,22 @@ def main():
             image = make_image(df_words)
             st.image(image, use_column_width=True)
 
+    posts = processed_data['posts']
+    subs = processed_data['subs']
+    gr_pvr = processed_data['gr_pvr']
+    post_view = processed_data['post_view']
+
+    mean_subs_pos, mean_subs_neg, max_subs_pos, max_subs_neg = calculate_mean_max_subs(subs, selected_channel)
+    mean_posts_day, mean_posts_week, mean_posts_month = calculate_mean_posts(posts, selected_channel)
+    mean_views = calculate_mean_views(post_view, selected_channel)
+    mean_reacts, mean_idx, react1, perc1, react2, perc2, react3, perc3 = calculate_mean_reacts(gr_pvr, selected_channel)
+    
+    fig_posts = create_fig_posts_inds(posts, selected_channel)
+    fig_subs = create_fig_subs_inds(subs, selected_channel)
+
+        # Инициализация состояния кнопок
+    if 'button_state' not in st.session_state:
+        st.session_state.button_state = "all (6м)"
 
     # Стили для чисел
     metric_styles = {
