@@ -6,6 +6,7 @@ import string
 import pandas as pd
 from collections import Counter
 import re
+from functions import get_gradient_color
 
 def load_stopwords_from_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
