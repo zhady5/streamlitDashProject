@@ -48,7 +48,7 @@ st.markdown("""
                    } 
     .custom-number { color: brown; 
                      font-weight: bold; 
-                     font-size: 20px; }
+                     font-size: 18px; }
     
     .stApp {
         max-width: 1200px;
