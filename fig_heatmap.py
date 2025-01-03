@@ -39,8 +39,7 @@ def create_heatmap(filtered_df):
                 z=z_values,
                 x=x_labels,
                 y=y_labels,
-                autocolorscale=False,
-                coloraxis_colorscale_defaults=dict(colorscale=[['#8B0000', '#8B0000']]),
+                colorscale=[['#8B0000', '#8B0000']],  # Один цвет
                 #colorscale= [[0,  '#F5DEB3'], [1, '#8B0000']], #[[0, '#F5DEB3'], [1, "#006a4e"]],
                 showscale=False,
                 xgap=10,
