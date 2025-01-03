@@ -24,6 +24,16 @@ def create_heatmap(filtered_df):
     z_values = df['publications'].unstack(level=-1)
     x_labels = [str(hour) for hour in range(1, 25)]
     y_labels = [date.strftime('%Y-%m-%d') for date in dates]
+
+    # Функция для определения цвета ячейки на основе её значения
+    def get_cell_color(z):
+        if z == 0:
+            return '#F5DEB3'  # Оранжевый цвет для нулей
+        else:
+            return '#8B0000'  # Красный цвет для ненулевых значений
+    
+    # Преобразуем массив значений в массив цветов
+    colors = [[get_cell_color(value) for value in row] for row in z_values]
     
     fig = go.Figure(
         data=[
@@ -39,11 +49,13 @@ def create_heatmap(filtered_df):
                 z=z_values,
                 x=x_labels,
                 y=y_labels,
-                colorscale= [[0,  '#F5DEB3'], [1, '#8B0000']], #[[0, '#F5DEB3'], [1, "#006a4e"]],
+                #colorscale= [[0,  '#F5DEB3'], [1, '#8B0000']], #[[0, '#F5DEB3'], [1, "#006a4e"]],
                 showscale=False,
                 xgap=10,
                 ygap=10,
-                hovertemplate='%{y} <br>%{x} ч <br>Публикаций: %{z}<extra></extra>'
+                hovertemplate='%{y} <br>%{x} ч <br>Публикаций: %{z}<extra></extra>',
+                marker_colorscale=None,  # Отключаем стандартную цветовую шкалу
+                marker_color=colors       # Используем наши собственные цвета
             )
         ]
     ).update_layout(
