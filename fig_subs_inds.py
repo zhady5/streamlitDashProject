@@ -29,7 +29,7 @@ def create_fig_subs_inds(subs, selected_channel):
    # fig_subs.add_trace(go.Bar(x=subdf_subs.date, y=subdf_subs.subs_cnt, marker_color=colors,
      #                         hovertemplate='%{x} <br>Подписчиков: %{y}<extra></extra>'), row=1, col=1)
 
-    fig_subs.add_trace(go.Scatter(x=subdf_subs.date, y=subdf_subs.subs_cnt, fill='tozeroy', mode='lines', line_color=colors,
+    fig_subs.add_trace(go.Scatter(x=subdf_subs.date, y=subdf_subs.subs_cnt, fill='tozeroy', mode='none', line_color=colors,
                               hovertemplate='%{x} <br>Подписчиков: %{y}<extra></extra>'), row=1, col=1)
     
     period_names = dict({'days': 'вчера', 'weeks': 'неделю', 'months': 'месяц'})
