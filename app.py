@@ -212,7 +212,7 @@ def main():
         st.markdown('<div class="custom-text">Этот график является полезным инструментом для понимания того, когда ваши конкуренты выпускают контент или если вы планируете протестировать новый график публикации своих постов (учитываются последние шесть месяцев).</div>', unsafe_allow_html=True)
         # Кнопки для выбора периода
         st.markdown('<div class="button-container">', unsafe_allow_html=True)
-        button_col1, button_col2, button_col3, button_col4, button_col5 = st.columns([0.25, 0.15, 0.15, 0.15, 0.30])
+        button_col1, button_col2, button_col3, button_col4, button_col5, button_gap = st.columns([0.05, 0.08, 0.08, 0.08, 0.10, 0.61])
         with button_col1:
             st.empty()          
         with button_col2:
