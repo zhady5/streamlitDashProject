@@ -26,7 +26,10 @@ def create_fig_subs_inds(subs, selected_channel):
     mean_subs = subdf_subs.subs_cnt.mean()
     colors = ['#8B4513' if val >= 2 * mean_subs else '#F5DEB3' for val in subdf_subs['subs_cnt']]
     
-    fig_subs.add_trace(go.Bar(x=subdf_subs.date, y=subdf_subs.subs_cnt, marker_color=colors,
+   # fig_subs.add_trace(go.Bar(x=subdf_subs.date, y=subdf_subs.subs_cnt, marker_color=colors,
+     #                         hovertemplate='%{x} <br>Подписчиков: %{y}<extra></extra>'), row=1, col=1)
+
+    fig_subs.add_trace(go.Scatter(x=subdf_subs.date, y=subdf_subs.subs_cnt, fill='tozeroy', mode='lines', line_color=colors,
                               hovertemplate='%{x} <br>Подписчиков: %{y}<extra></extra>'), row=1, col=1)
     
     period_names = dict({'days': 'вчера', 'weeks': 'неделю', 'months': 'месяц'})
