@@ -40,7 +40,7 @@ def create_heatmap(filtered_df):
                 z=z_values,
                 x=x_labels,
                 y=y_labels,
-                colorscale= [[0,  '#F5DEB3'], [[0,0000000001, '#8B0000'], [1, '#8B0000']]], #[[0, '#F5DEB3'], [1, "#006a4e"]],
+                colorscale= [[0,  '#F5DEB3'], [[0.0000000001, '#8B0000'], [1, '#8B0000']]], #[[0, '#F5DEB3'], [1, "#006a4e"]],
                 showscale=False,
                 xgap=10,
                 ygap=10,
