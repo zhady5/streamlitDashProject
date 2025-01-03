@@ -33,7 +33,7 @@ def create_heatmap(filtered_df):
             return '#8B0000'  # Красный цвет для ненулевых значений
     
     # Преобразуем массив значений в массив цветов
-    colors = [[get_cell_color(value) for value in row] for row in z_values]
+    colors = [get_cell_color(value) for row in z_values]
     
     fig = go.Figure(
         data=[
